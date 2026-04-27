@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1fc6dc12747db7649a01a0cc5cebfed3
+guid: ef0c20d864f3b7c459ec7959aeb658aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1533641171668172899
-    second: GridSpaceGood_0
+      213: 1192544073668875177
+    second: glove2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GridSpaceGood_0
+      name: glove2_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 119
         y: 0
-        width: 32
-        height: 25
+        width: 121
+        height: 160
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 1, z: 1, w: 1}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9ffdcdda7967bae0800000000000000
-      internalID: -1533641171668172899
+      spriteID: 9a3d7024484cc8010800000000000000
+      internalID: 1192544073668875177
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6bfe109699cc2e4408a9e7fe50193a61
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GridSpaceGood_0: -1533641171668172899
+      glove2_0: 1192544073668875177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
