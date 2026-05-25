@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public interface IDamagable { 
+public interface IDamagable
+{
     int health { get; set; }
     void Damage(int damage);
-    
+
+
+
 }

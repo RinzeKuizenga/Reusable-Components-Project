@@ -9,7 +9,7 @@ public class KeyboardInput : MonoBehaviour
     [SerializeField] KeyCode up;
 
     Vector2 direction;
-
+ 
     public Vector2 GetInput()
     {
         direction = Vector2.zero;   

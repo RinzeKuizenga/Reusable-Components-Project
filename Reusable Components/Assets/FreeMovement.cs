@@ -21,4 +21,9 @@ public class FreeMovement : MonoBehaviour
 
         rb.position = clampedPosition;  
     }
+
+    public void StopMove()
+    {
+        rb.linearVelocity = Vector2.zero;
+    }
 }
