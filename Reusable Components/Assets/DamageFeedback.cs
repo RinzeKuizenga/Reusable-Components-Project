@@ -6,7 +6,7 @@ public class DamageFeedback : MonoBehaviour
     private TextMeshPro damageText;
 
     bool isBig = false;
-    private float holdTime = 0.7f;  // How long to stay at 0.5
+    private float holdTime = 0.7f;  
     private float elapsedTime = 0f;
     private void Awake()
     {
@@ -26,21 +26,18 @@ public class DamageFeedback : MonoBehaviour
             transform.localScale += Vector3.one * 6f * Time.deltaTime;
         }
 
-        // Check if we've reached 0.5
         if (transform.localScale.x >= 0.5f && !isBig)
         {
             isBig = true;
-            elapsedTime = 0f;  // Reset timer
+            elapsedTime = 0f; 
         }
 
-        // Hold phase - wait before shrinking
         if (isBig && elapsedTime < holdTime)
         {
             elapsedTime += Time.deltaTime;
-            return;  // Don't shrink yet
+            return;  
         }
 
-        // Shrinking phase
         if (transform.localScale.x > 0f && isBig)
         {
             transform.localScale -= Vector3.one * 6f * Time.deltaTime;
