@@ -3619,8 +3619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc757df54ac3ca458eee1dc3eca4746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
-  menuController: {fileID: 7130218656106464382, guid: 0965657718c93174ebac04d68dec3574, type: 3}
-  menuPrefab: {fileID: 0}
+  menuController: {fileID: 7575751679018061786, guid: 0965657718c93174ebac04d68dec3574, type: 3}
+  menuPrefab: {fileID: 7575751679018061786, guid: 0965657718c93174ebac04d68dec3574, type: 3}
   player1Transform: {fileID: 723032721}
 --- !u!1 &1028832021
 GameObject:

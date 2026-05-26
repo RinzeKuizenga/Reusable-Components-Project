@@ -13,6 +13,10 @@ public class MenuController : MonoBehaviour
     string selectedAttack = "";
     [SerializeField] private Vector2[] attacks;
 
+    string[] Enemyoptions = {};
+    string selectedEnemy = "";
+    [SerializeField] private Vector2[] enemies;
+
     string[] currentOptions;
     Vector2[] currentPositions;
 
