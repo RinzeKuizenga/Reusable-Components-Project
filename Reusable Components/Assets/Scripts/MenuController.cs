@@ -2,6 +2,12 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MenuStates
+{
+    Main,
+    Action,
+    Target
+}
 
 public class MenuController : MonoBehaviour
 {
@@ -13,12 +19,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private List<AttackData> attacks;
     [SerializeField] private Vector2[] attacksPos;
 
-    string[] Enemyoptions = {};
-    string selectedEnemy = "";
     [SerializeField] private Vector2[] enemies;
 
     string[] currentOptions;
     Vector2[] currentPositions;
+    MenuStates currentState;
 
     public Transform arrowTrans;
     public GameObject menuBackground;
@@ -60,66 +65,44 @@ public class MenuController : MonoBehaviour
         string currentSelection = currentOptions[selectedIndex];
         Debug.Log($"currentOptions: {currentOptions[selectedIndex]}");
 
-        if(currentSelection == "Attack")
-        {
-            menuBackground.SetActive(true);
-            //currentOptions = Attackoptions;
-            //currentPositions = attacks;
 
-            selectedIndex = 0;
-            MoveArrow();
-
-            GameStateManager.Instance.ChangeState(GameState.Player1Action);
-        }
-        if(currentSelection == "SmallAttack")
-        {
-            menuBackground.SetActive(false);
-            currentOptions = Enemyoptions;
-            currentPositions = enemies;
-
-            selectedIndex = 0;
-            MoveArrow();
-
-            GameStateManager.Instance.ChangeState(GameState.Player1Target);
-        }
     }
 
     void Back()
     {
         selectedIndex = 0;
-        menuBackground.SetActive(false);
-        Destroy(gameObject);
-        if(GameStateManager.Instance.CurrentState == GameState.Player1Action) GameStateManager.Instance.ChangeState(GameState.Player1Turn);
-        if (GameStateManager.Instance.CurrentState == GameState.Player1Target) GameStateManager.Instance.ChangeState(GameState.Player1Action);
-
-        Debug.Log($"Went back to {GameStateManager.Instance.CurrentState}");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && GameStateManager.Instance.CurrentState == GameState.Player1Turn)
+        if (Input.GetKeyDown(KeyCode.A) )
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.D) && GameStateManager.Instance.CurrentState == GameState.Player1Turn)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.Z) )
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Select();
         }
-        if (Input.GetKeyDown(KeyCode.X) )
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Back();
         }
-        if (Input.GetKeyDown(KeyCode.W) && GameStateManager.Instance.CurrentState == GameState.Player1Action)
+        if (Input.GetKeyDown(KeyCode.W))
         {
             MoveLeft();
         }
-        if (Input.GetKeyDown(KeyCode.S) && GameStateManager.Instance.CurrentState == GameState.Player1Action) 
+        if (Input.GetKeyDown(KeyCode.S)) 
         {
             MoveRight(); 
         }
+    }
+
+    void switchstate(MenuStates newState)
+    {
+        newState = currentState;
     }
 }
