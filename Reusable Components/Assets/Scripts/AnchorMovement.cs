@@ -16,11 +16,9 @@ public class AnchorMovement : MonoBehaviour
             return;
         }
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        Debug.Log($"walking to: {Vector2.Distance(transform.position, target)}");
         if (Vector2.Distance(transform.position, target) < 0.02f)
         {
             isMoving = false;
-            Debug.Log("STOP walking");
         }
     }
 

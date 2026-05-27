@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private DamageFeedback damagePrefab;
     public int health { get; set; }
 
+    public int stamina;
+
     [SerializeField] private int maxHealth;
 
     public void Start()

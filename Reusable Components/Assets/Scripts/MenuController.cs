@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -6,12 +8,10 @@ public class MenuController : MonoBehaviour
     int selectedIndex;
 
     string[] pageoptions = { "Attack", "Items", "Supers" };
-    string selectedPage = "";
-    [SerializeField] private Vector2[] blocks;
+    [SerializeField] private Vector2[] blocksPos;
 
-    string[] Attackoptions = { "SmallAttack", "BigAttack" };
-    string selectedAttack = "";
-    [SerializeField] private Vector2[] attacks;
+    [SerializeField] private List<AttackData> attacks;
+    [SerializeField] private Vector2[] attacksPos;
 
     string[] Enemyoptions = {};
     string selectedEnemy = "";
@@ -26,7 +26,7 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         currentOptions = pageoptions;
-        currentPositions = blocks;
+        currentPositions = blocksPos;
         MoveArrow();
     }
     void MoveRight()
@@ -52,25 +52,35 @@ public class MenuController : MonoBehaviour
 
     void MoveArrow()
     {
-        //arrowTrans.position = Vector2.MoveTowards(transform.position, blocks[selectedIndex], 8 *
-        //Time.deltaTime);
         arrowTrans.position = currentPositions[selectedIndex];
     }
 
     void Select()
     {
-        selectedPage = currentOptions[selectedIndex];
+        string currentSelection = currentOptions[selectedIndex];
+        Debug.Log($"currentOptions: {currentOptions[selectedIndex]}");
 
-        if(selectedPage == "Attack")
+        if(currentSelection == "Attack")
         {
             menuBackground.SetActive(true);
-            currentOptions = Attackoptions;
-            currentPositions = attacks;
+            //currentOptions = Attackoptions;
+            //currentPositions = attacks;
 
             selectedIndex = 0;
             MoveArrow();
 
             GameStateManager.Instance.ChangeState(GameState.Player1Action);
+        }
+        if(currentSelection == "SmallAttack")
+        {
+            menuBackground.SetActive(false);
+            currentOptions = Enemyoptions;
+            currentPositions = enemies;
+
+            selectedIndex = 0;
+            MoveArrow();
+
+            GameStateManager.Instance.ChangeState(GameState.Player1Target);
         }
     }
 
@@ -79,9 +89,10 @@ public class MenuController : MonoBehaviour
         selectedIndex = 0;
         menuBackground.SetActive(false);
         Destroy(gameObject);
-        selectedPage = "";
-        GameStateManager.Instance.ChangeState(GameState.Player1Turn);
-        Debug.Log($"Went back to");
+        if(GameStateManager.Instance.CurrentState == GameState.Player1Action) GameStateManager.Instance.ChangeState(GameState.Player1Turn);
+        if (GameStateManager.Instance.CurrentState == GameState.Player1Target) GameStateManager.Instance.ChangeState(GameState.Player1Action);
+
+        Debug.Log($"Went back to {GameStateManager.Instance.CurrentState}");
     }
 
     private void Update()
@@ -94,11 +105,11 @@ public class MenuController : MonoBehaviour
         {
             MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.Z) && GameStateManager.Instance.CurrentState == GameState.Player1Turn)
+        if (Input.GetKeyDown(KeyCode.Z) )
         {
             Select();
         }
-        if (Input.GetKeyDown(KeyCode.X) && GameStateManager.Instance.CurrentState == GameState.Player1Action)
+        if (Input.GetKeyDown(KeyCode.X) )
         {
             Back();
         }
@@ -107,7 +118,7 @@ public class MenuController : MonoBehaviour
             MoveLeft();
         }
         if (Input.GetKeyDown(KeyCode.S) && GameStateManager.Instance.CurrentState == GameState.Player1Action) 
-        { 
+        {
             MoveRight(); 
         }
     }

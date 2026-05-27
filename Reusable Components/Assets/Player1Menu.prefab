@@ -54,8 +54,14 @@ MonoBehaviour:
   - {x: -1.837, y: 0.294}
   - {x: -4.348, y: 0.294}
   attacks:
-  - {x: -2.6, y: 2.5}
-  - {x: -2.6, y: 1.7}
+  - attackName: Jump
+    damage: 4
+    target: 0
+  - attackName: Hammer
+    damage: 8
+    target: 0
+  enemies:
+  - {x: 1.1, y: -1.1}
   arrowTrans: {fileID: 8406735340659058192}
   menuBackground: {fileID: 4255134363877741461}
 --- !u!1 &850048380367002938
