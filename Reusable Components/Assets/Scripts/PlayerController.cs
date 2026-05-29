@@ -3,17 +3,19 @@ using UnityEngine.InputSystem.XR.Haptics;
 
 public class PlayerController : MonoBehaviour
 {
-    KeyboardInput keyboardInput;
     FreeMovement freeMovement;
     AnchorHolder anchorHolder;
     AnchorMovement anchorMovement;
 
+    IInput _input;
+
     void Awake()
     {
-        keyboardInput = GetComponent<KeyboardInput>();
         freeMovement = GetComponent<FreeMovement>();
         anchorHolder = GetComponent<AnchorHolder>();    
         anchorMovement = GetComponent<AnchorMovement>();
+
+        _input = GetComponent<IInput>();
     }
 
     private void Start()
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving)
         {
-            freeMovement.Move(keyboardInput.GetInput());
+            freeMovement.Move(_input.GetInput());
         }
     }
 

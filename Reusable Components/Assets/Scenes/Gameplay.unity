@@ -1806,6 +1806,7 @@ GameObject:
   - component: {fileID: 723032723}
   - component: {fileID: 723032724}
   - component: {fileID: 723032719}
+  - component: {fileID: 723032728}
   - component: {fileID: 723032718}
   - component: {fileID: 723032725}
   - component: {fileID: 723032722}
@@ -1914,7 +1915,7 @@ Transform:
   m_GameObject: {fileID: 723032717}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.87, y: -0.68, z: 0}
+  m_LocalPosition: {x: -2.98, y: -0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2025,6 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   damagePrefab: {fileID: 1307369317432838002, guid: 417a7a4bc589c544c85fc89bf4e8ed1b, type: 3}
+  stamina: 0
   maxHealth: 100
 --- !u!114 &723032726
 MonoBehaviour:
@@ -2057,6 +2059,20 @@ MonoBehaviour:
   - {x: -4.45, y: -0.68}
   - {x: -3.87, y: -0.68}
   - {x: -2.72, y: -1.67}
+--- !u!114 &723032728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723032717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb59c472acf8f434b9fe987260883fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerInput
+  horizontalAxis: HorizontalLeft
+  verticalAxis: VerticalLeft
 --- !u!1 &752035390
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,6 +4779,7 @@ GameObject:
   - component: {fileID: 1500747150}
   - component: {fileID: 1500747153}
   - component: {fileID: 1500747149}
+  - component: {fileID: 1500747157}
   - component: {fileID: 1500747148}
   - component: {fileID: 1500747154}
   - component: {fileID: 1500747147}
@@ -4982,6 +4999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   damagePrefab: {fileID: 1307369317432838002, guid: 417a7a4bc589c544c85fc89bf4e8ed1b, type: 3}
+  stamina: 0
   maxHealth: 120
 --- !u!114 &1500747155
 MonoBehaviour:
@@ -5014,6 +5032,20 @@ MonoBehaviour:
   - {x: -2.96, y: -2.65}
   - {x: -4.34, y: -2.65}
   - {x: -1.34, y: -1.67}
+--- !u!114 &1500747157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500747146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb59c472acf8f434b9fe987260883fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerInput
+  horizontalAxis: HorizontalRight
+  verticalAxis: VerticalRight
 --- !u!1 &1632389104
 GameObject:
   m_ObjectHideFlags: 0

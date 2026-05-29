@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 586180260291560824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.19205, y: 0.91332, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,9 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   blocks:
-  - {x: -3.093, y: 0.294}
-  - {x: -1.837, y: 0.294}
-  - {x: -4.348, y: 0.294}
+  - Attack
+  - Item
+  - Super
+  blocksPos:
+  - {x: -3, y: 0.3}
+  - {x: -1.7, y: 0.3}
+  - {x: -4.3, y: 0.3}
   attacks:
   - attackName: Jump
     damage: 4
@@ -60,8 +64,11 @@ MonoBehaviour:
   - attackName: Hammer
     damage: 8
     target: 0
+  attacksPos:
+  - {x: -2.4, y: 2.4}
+  - {x: -2.4, y: 1.7}
   enemies:
-  - {x: 1.1, y: -1.1}
+  - {x: 3.83, y: -1.56}
   arrowTrans: {fileID: 8406735340659058192}
   menuBackground: {fileID: 4255134363877741461}
 --- !u!1 &850048380367002938

@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class KeyboardInput : MonoBehaviour
+public class KeyboardInput : MonoBehaviour, IInput
 {
     [SerializeField] KeyCode left;
     [SerializeField] KeyCode right;
