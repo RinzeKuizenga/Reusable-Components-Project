@@ -8,12 +8,8 @@ public enum GameState
     Idle,
 
     Player1Turn,
-    Player1Action,
-    Player1Target,
 
     Player2Turn,
-    Player2Action,
-    Player2Target,
 
     EnemyTurn
 }
@@ -25,9 +21,7 @@ public class GameStateManager : MonoBehaviour
     public event Action<GameState> onStateChanged;
 
     [SerializeField] private MenuController menuController;
-    [SerializeField] private MenuController menuPrefab;
 
-    [SerializeField] private Transform player1Transform;
 
     private void Awake()
     {
@@ -44,7 +38,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        SetPlayer1Turn();
+        SetIdleTurn();
     }
 
     public void ChangeState(GameState newState)
@@ -54,37 +48,16 @@ public class GameStateManager : MonoBehaviour
         CurrentState = newState;
         onStateChanged?.Invoke(CurrentState);   
         Debug.Log($"GameState: {newState}");
-
-        if(newState == GameState.Player1Turn)
-        {
-             menuPrefab = Instantiate(menuController, player1Transform.position + Vector3.up * 2, Quaternion.identity);
-        }
     }
 
     public void SetPlayer1Turn()
     {
         ChangeState(GameState.Player1Turn);
     }
-    public void SetPlayer1Action()
-    {
-        ChangeState(GameState.Player1Action);
-    }
-    public void SetPlayer1Target()
-    {
-        ChangeState(GameState.Player1Target);
-    }
 
     public void SetPlayer2Turn()
     {
         ChangeState(GameState.Player2Turn);
-    }
-    public void SetPlayer2Action()
-    {
-        ChangeState(GameState.Player2Action);
-    }
-    public void SetPlayer2Target()
-    {
-        ChangeState(GameState.Player2Target);
     }
 
     public void SetEnemyTurn()
@@ -95,5 +68,6 @@ public class GameStateManager : MonoBehaviour
     public void SetIdleTurn()
     {
         ChangeState(GameState.Idle);
+        Debug.Log($"currentState:{CurrentState}");
     }
 }

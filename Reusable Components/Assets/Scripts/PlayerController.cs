@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
 
     IInput _input;
 
+    [SerializeField] private MenuController menuPrefab;
+    [SerializeField] private GameState goodState;
+
     void Awake()
     {
         freeMovement = GetComponent<FreeMovement>();
-        anchorHolder = GetComponent<AnchorHolder>();    
+        anchorHolder = GetComponent<AnchorHolder>();
         anchorMovement = GetComponent<AnchorMovement>();
 
         _input = GetComponent<IInput>();
@@ -20,13 +23,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        anchorMovement.onFinishedMoving += HandleFinishMoving;
         GameStateManager.Instance.onStateChanged += HandleStateChanged;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving)
         {
             freeMovement.Move(_input.GetInput());
+            Debug.Log("Moving");
         }
     }
 
@@ -49,6 +54,14 @@ public class PlayerController : MonoBehaviour
             case GameState.EnemyTurn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
                 break;
+        }
+    }
+
+    void HandleFinishMoving()
+    {
+        if (GameStateManager.Instance.CurrentState == goodState)
+        {
+            Instantiate(menuPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         }
     }
 

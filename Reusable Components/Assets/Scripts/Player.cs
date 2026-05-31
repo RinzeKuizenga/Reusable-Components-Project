@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -11,9 +12,11 @@ public class Player : MonoBehaviour, IDamagable
 
     public int stamina;
 
-    [SerializeField] private int maxHealth;
+    public int maxHealth;
 
-    public void Start()
+    public Action OnDamageTaken;
+
+    private void Awake()
     {
         health = maxHealth;
     }
@@ -25,5 +28,7 @@ public class Player : MonoBehaviour, IDamagable
 
         DamageFeedback damageFeedback = Instantiate(damagePrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(damage);
+
+        OnDamageTaken?.Invoke();
     }
 }

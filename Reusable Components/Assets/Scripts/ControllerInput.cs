@@ -14,7 +14,6 @@ public class ControllerInput : MonoBehaviour, IInput
         direction.x = Input.GetAxis(horizontalAxis);
         direction.y = Input.GetAxis(verticalAxis);
 
-        Debug.Log($"{horizontalAxis}");
         return direction.normalized;
 
     }

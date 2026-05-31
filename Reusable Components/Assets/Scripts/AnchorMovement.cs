@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class AnchorMovement : MonoBehaviour
 {
@@ -8,17 +9,19 @@ public class AnchorMovement : MonoBehaviour
 
     public bool isMoving = false;
 
-
+    public Action onFinishedMoving;
     private void Update()
     {
         if (!isMoving)
         {
             return;
         }
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, target, speed * Time.deltaTime);
         if (Vector2.Distance(transform.position, target) < 0.02f)
         {
+            transform.position = target;
             isMoving = false;
+            onFinishedMoving?.Invoke();
         }
     }
 

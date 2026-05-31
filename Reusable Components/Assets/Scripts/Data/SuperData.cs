@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class SuperData : MonoBehaviour
+[System.Serializable]
+public class SuperData
 {
     public string superName;
     public int damage;

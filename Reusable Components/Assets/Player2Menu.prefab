@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 504163086591215439}
   - component: {fileID: 7575751679018061786}
   m_Layer: 0
-  m_Name: Player1Menu
+  m_Name: Player2Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,9 +54,9 @@ MonoBehaviour:
   - Item
   - Super
   blocksPos:
-  - {x: -3.05, y: 0.3}
-  - {x: -1.75, y: 0.3}
-  - {x: -4.35, y: 0.3}
+  - {x: -3.05, y: -1.6}
+  - {x: -1.75, y: -1.6}
+  - {x: -4.35, y: -1.6}
   attacks:
   - attackName: Jump
     damage: 4
@@ -78,19 +78,19 @@ MonoBehaviour:
     effective: 20
     target: 1
   supers:
-  - superName: Spin Top
-    damage: 20
+  - superName: Big Boom
+    damage: 30
     target: 0
   menuSlots:
-  - {x: -2.55, y: 2.4}
-  - {x: -2.55, y: 1.7}
-  - {x: -2.55, y: 1}
-  - {x: -2.55, y: 0.3}
+  - {x: -2.55, y: 0.45}
+  - {x: -2.55, y: -0.25}
+  - {x: -2.55, y: -0.95}
+  - {x: -2.55, y: -1.65}
   enemies:
   - {x: 3.83, y: -1.56}
   players:
-  - {x: -4.14, y: -0.64}
-  - {x: -5.79, y: -2.62}
+  - {x: -4.14, y: -2.62}
+  - {x: -5.49, y: -0.64}
   menuBackground: {fileID: 4255134363877741461}
   arrowTrans: {fileID: 8406735340659058192}
   selectedAttack:
