@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IDamagable
     public int maxHealth;
 
     public Action OnDamageTaken;
+    //public Action OnStamindaUsed;
+    public Action OnPlayerDeath;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour, IDamagable
     }
     public void Damage(int damage)
     {
+        if (health <= 0) return;
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
         Debug.Log($"{health}");
@@ -30,5 +33,7 @@ public class Player : MonoBehaviour, IDamagable
         damageFeedback.DisplayDamage(damage);
 
         OnDamageTaken?.Invoke();
+
+        if (health <= 0) OnPlayerDeath?.Invoke();
     }
 }

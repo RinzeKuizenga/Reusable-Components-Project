@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private List<string> blocks;
     [SerializeField] private Vector2[] blocksPos;
+
+    [SerializeField] private List<TextMeshPro> optionsText;
 
     [SerializeField] private List<AttackData> attacks;
     [SerializeField] private List<ItemData> items;
@@ -186,6 +189,7 @@ public class MenuController : MonoBehaviour
                         currentOptionCount = supers.Count;
                         break;
                 }
+                DisplayText();
                 menuBackground.SetActive(true);
                 break;
 
@@ -207,6 +211,22 @@ public class MenuController : MonoBehaviour
         }
 
         MoveArrow();
+    }
+
+    void DisplayText()
+    {
+        Debug.Log("Text displayed");
+        for (int i = 0; i < optionsText.Count; i++)
+        {
+            if (i < currentOptionCount)
+            {
+                optionsText[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                optionsText[i].gameObject.SetActive(false);
+            }
+        }
     }
     private void Update()
     {
