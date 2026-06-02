@@ -5,5 +5,6 @@ public class SuperData
 {
     public string superName;
     public int damage;
+    public int staminaCost;
     public TargetType target;
 }

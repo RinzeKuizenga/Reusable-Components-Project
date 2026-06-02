@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
@@ -6,6 +7,8 @@ public class Enemy : MonoBehaviour, IDamagable
     public int health { get; set; }
 
     [SerializeField] private int maxHealth;
+
+    public Action onEnemyDeath;
 
     public void Start()
     {
@@ -19,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         DamageFeedback damageFeedback = Instantiate(damagePrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(damage);
+        onEnemyDeath?.Invoke();
         Debug.Log($"{health}");
     }
 }

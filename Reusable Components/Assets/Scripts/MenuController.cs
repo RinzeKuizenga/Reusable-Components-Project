@@ -218,9 +218,29 @@ public class MenuController : MonoBehaviour
         Debug.Log("Text displayed");
         for (int i = 0; i < optionsText.Count; i++)
         {
+            string text = "";
+
+            switch (selectedAction)
+            {
+                case Actions.Attack:
+                    if (i < attacks.Count)
+                        text = attacks[i].attackName;
+                    break;
+
+                case Actions.Item:
+                    if (i < items.Count)
+                        text = items[i].itemName;
+                    break;
+
+                case Actions.Super:
+                    if (i < supers.Count)
+                        text = supers[i].superName;
+                    break;
+            }
             if (i < currentOptionCount)
             {
                 optionsText[i].gameObject.SetActive(true);
+                optionsText[i].text = text;
             }
             else
             {

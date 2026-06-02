@@ -3,20 +3,21 @@ using UnityEngine.InputSystem.XR.Haptics;
 
 public class EnemyController : MonoBehaviour
 {
-    KeyboardInput keyboardInput;
-    FreeMovement freeMovement;
     AnchorHolder anchorHolder;
     AnchorMovement anchorMovement;
+    Enemy enemy;
 
     void Awake()
     {
         anchorHolder = GetComponent<AnchorHolder>();
         anchorMovement = GetComponent<AnchorMovement>();
+        enemy = GetComponent<Enemy>();  
     }
 
     private void Start()
     {
         GameStateManager.Instance.onStateChanged += HandleStateChanged;
+        enemy.onEnemyDeath += enemyDeath;
     }
 
     void HandleStateChanged(GameState newState)
@@ -30,6 +31,11 @@ public class EnemyController : MonoBehaviour
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 16);
                 break;
         }
+    }
+
+    void enemyDeath()
+    {
+
     }
 
     private void OnDestroy()

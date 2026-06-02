@@ -6,7 +6,7 @@ public class DamageFeedback : MonoBehaviour
     private TextMeshPro damageText;
 
     bool isBig = false;
-    private float holdTime = 0.7f;  
+    private float holdTime = 0.55f;  
     private float elapsedTime = 0f;
     private void Awake()
     {

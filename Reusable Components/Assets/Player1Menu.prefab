@@ -72,19 +72,24 @@ MonoBehaviour:
   items:
   - itemName: Health Potion
     effective: 20
+    amount: 0
     target: 1
   - itemName: Revive
     effective: 20
+    amount: 0
     target: 1
   - itemName: Bleh
     effective: 20
+    amount: 0
     target: 1
   - itemName: Bleh
     effective: 20
+    amount: 0
     target: 1
   supers:
   - superName: Spin Top
     damage: 20
+    staminaCost: 0
     target: 0
   menuSlots:
   - {x: -2.55, y: 2.4}
@@ -105,10 +110,12 @@ MonoBehaviour:
   selectedItem:
     itemName: 
     effective: 0
+    amount: 0
     target: 0
   selectedSuper:
     superName: 
     damage: 0
+    staminaCost: 0
     target: 0
 --- !u!1 &850048380367002938
 GameObject:
@@ -248,9 +255,9 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 45.1
+  m_fontSizeMax: 40.3
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -429,9 +436,9 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 45.1
+  m_fontSizeMax: 40.3
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -828,9 +835,9 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 45.1
+  m_fontSizeMax: 40.3
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1282,9 +1289,9 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 45.1
+  m_fontSizeMax: 40.3
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

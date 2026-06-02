@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     FreeMovement freeMovement;
     AnchorHolder anchorHolder;
     AnchorMovement anchorMovement;
+    Player player;
 
     IInput _input;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
         freeMovement = GetComponent<FreeMovement>();
         anchorHolder = GetComponent<AnchorHolder>();
         anchorMovement = GetComponent<AnchorMovement>();
+        player = GetComponent<Player>();
 
         _input = GetComponent<IInput>();
     }
@@ -31,7 +33,6 @@ public class PlayerController : MonoBehaviour
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving)
         {
             freeMovement.Move(_input.GetInput());
-            Debug.Log("Moving");
         }
     }
 
