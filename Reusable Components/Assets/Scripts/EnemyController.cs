@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
     AnchorMovement anchorMovement;
     Enemy enemy;
 
+    public int enemyInt;
+
     void Awake()
     {
         anchorHolder = GetComponent<AnchorHolder>();
@@ -28,7 +30,19 @@ public class EnemyController : MonoBehaviour
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
                 break;
             default:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 16);
+
+                switch (enemyInt)
+                {
+                    case 0:
+                        anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
+                        break;
+                    case 1:
+                        anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
+                        break;
+                    case 2:
+                        anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
+                        break;
+                }
                 break;
         }
     }

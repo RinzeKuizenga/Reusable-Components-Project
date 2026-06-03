@@ -31,4 +31,11 @@ public class AnchorMovement : MonoBehaviour
         isMoving = true;
         speed = newSpeed;   
     }
+
+    public void MoveTo(Transform targetTransform, int newSpeed)
+    {
+        target = targetTransform.position;
+        isMoving = true;
+        speed = newSpeed;
+    }
 }

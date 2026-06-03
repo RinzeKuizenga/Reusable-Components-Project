@@ -47,8 +47,8 @@ public class DamageFeedback : MonoBehaviour
 
     private void Start()
     {
-        transform.position += Vector3.up * 0.5f;
-        transform.position += Vector3.left * 0.5f;
-        Destroy(gameObject, 1.6f);
+        transform.position += Vector3.up * 0.7f;
+        transform.position += Vector3.left * 0.9f;
+        Destroy(gameObject, 1.1f);
     }
 }
