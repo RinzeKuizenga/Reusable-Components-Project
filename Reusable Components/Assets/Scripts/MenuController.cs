@@ -1,8 +1,8 @@
-using NUnit.Framework;
+
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum MenuStates
@@ -19,6 +19,7 @@ public enum Actions
     Super
 }
 
+
 public class MenuController : MonoBehaviour
 {
     int selectedIndex;
@@ -31,10 +32,10 @@ public class MenuController : MonoBehaviour
     [SerializeField] private List<AttackData> attacks;
     [SerializeField] private List<ItemData> items;
     [SerializeField] private List<SuperData> supers;
+    [SerializeField] private List<Enemy> enemies;
 
 
     [SerializeField] private Vector2[] menuSlots;
-    [SerializeField] private Vector2[] enemies;
     [SerializeField] private Vector2[] players;
 
     [SerializeField] private GameObject menuBackground;
@@ -53,13 +54,21 @@ public class MenuController : MonoBehaviour
     public AttackData selectedAttack;
     public ItemData selectedItem;
     public SuperData selectedSuper;
+    public PlayerController currentPlayer;
+
+    public event Action<AttackCommand> onAttackChosen;
 
     private void Awake()
     {
-        currentState = MenuStates.Main;;
+        currentState = MenuStates.Main; ;
         currentPositions = blocksPos;
         currentOptionCount = blocks.Count;
         MoveArrow();
+    }
+
+    public void WhichPlayer(PlayerController player)
+    {
+        currentPlayer = player;
     }
     void MoveRight()
     {
@@ -87,7 +96,14 @@ public class MenuController : MonoBehaviour
         Debug.Log($"Index: {selectedIndex}");
         Debug.Log($"Positions Length: {currentPositions.Length}");
         Debug.Log($"Option Count: {currentOptionCount}");
-        targetPosition = currentPositions[selectedIndex];
+        if (currentState == MenuStates.Target)
+        {
+            targetPosition = (Vector2)enemies[selectedIndex].transform.position + new Vector2(-1f, 0f);
+        }
+        else
+        {
+            targetPosition = currentPositions[selectedIndex];
+        }
 
         switch (currentState)
         {
@@ -133,11 +149,20 @@ public class MenuController : MonoBehaviour
                         currentTargetType = selectedSuper.target;
                         break;
                 }
-                   
+
                 SwitchState(MenuStates.Target);
                 break;
 
             case MenuStates.Target:
+                if (currentTargetType == TargetType.Enemy)
+                {
+                    AttackCommand command = new AttackCommand();
+
+                    command.attack = selectedAttack;
+                    command.target = enemies[selectedIndex];
+                    command.attacker = currentPlayer;
+                    onAttackChosen?.Invoke(command);
+                }
                 Destroy(gameObject);
                 break;
         }
@@ -196,8 +221,8 @@ public class MenuController : MonoBehaviour
             case MenuStates.Target:
                 if (currentTargetType == TargetType.Enemy)
                 {
-                    currentPositions = enemies; 
-                   currentOptionCount = enemies.Length;
+                    enemies = FindObjectsOfType<Enemy>().ToList();
+                    currentOptionCount = enemies.Count;
 
                 }
                 else if (currentTargetType == TargetType.Ally)

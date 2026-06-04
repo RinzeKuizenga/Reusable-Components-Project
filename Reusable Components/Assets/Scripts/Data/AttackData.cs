@@ -6,5 +6,4 @@ public class AttackData
     public string attackName;
     public int damage;
     public TargetType target;
-
 }

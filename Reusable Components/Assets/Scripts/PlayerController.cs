@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem.XR.Haptics;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private MenuController menuPrefab;
     [SerializeField] private GameState goodState;
+
+    public Action OnAttackFinished;
 
     void Awake()
     {
@@ -62,8 +65,16 @@ public class PlayerController : MonoBehaviour
     {
         if (GameStateManager.Instance.CurrentState == goodState)
         {
-            Instantiate(menuPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+            MenuController menu = Instantiate(menuPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+            menu.WhichPlayer(this);
+            menu.onAttackChosen += HandleAttackChosen;
         }
+    }
+
+    void HandleAttackChosen(AttackCommand command)
+    {
+        command.target.Damage(command.attack.damage);
+        OnAttackFinished?.Invoke();
     }
 
     private void OnDestroy()
