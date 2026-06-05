@@ -1,10 +1,40 @@
 fileFormatVersion: 2
-guid: f4f6639cc3e0bcb48b53240057703250
+guid: 894dba8049b5cce4b9b2c3df04ab46f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -121899859186592416
-    second: NumberFont_0
+      213: 4921990738652465515
+    second: NumberFont(1) Atlas_0
+  - first:
+      213: -2039450110714356155
+    second: NumberFont(1) Atlas_1
+  - first:
+      213: -9093414541198523348
+    second: NumberFont(1) Atlas_2
+  - first:
+      213: 5046356288987426476
+    second: NumberFont(1) Atlas_3
+  - first:
+      213: 3120884080447213941
+    second: NumberFont(1) Atlas_4
+  - first:
+      213: -7241028957723439713
+    second: NumberFont(1) Atlas_5
+  - first:
+      213: -1333749013448120716
+    second: NumberFont(1) Atlas_6
+  - first:
+      213: -1722495839975100695
+    second: NumberFont(1) Atlas_7
+  - first:
+      213: 5889446938296492701
+    second: NumberFont(1) Atlas_8
+  - first:
+      213: 2805776668248361242
+    second: NumberFont(1) Atlas_9
+  - first:
+      213: 5902041272815674075
+    second: NumberFont(1) Atlas_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,12 +76,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +105,7 @@ TextureImporter:
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,243 +130,243 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NumberFont_0
+      name: NumberFont(1) Atlas_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 10
-        height: 16
+        x: 1
+        y: 73
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 065530359bcee4ef0800000000000000
-      internalID: -121899859186592416
+      spriteID: b69842dbf7c6e4440800000000000000
+      internalID: 4921990738652465515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_1
+      name: NumberFont(1) Atlas_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 0
-        width: 10
-        height: 16
+        x: 25
+        y: 73
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d18e1f5ef1ef9a843b53cc04245c2ff3
-      internalID: -414538053
+      spriteID: 54e5db50eea62b3e0800000000000000
+      internalID: -2039450110714356155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_2
+      name: NumberFont(1) Atlas_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 10
-        height: 16
+        x: 49
+        y: 73
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 05c70935f1741944eac1e5e151fcf816
-      internalID: 1691857564
+      spriteID: c248d7c57a3bdc180800000000000000
+      internalID: -9093414541198523348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_3
+      name: NumberFont(1) Atlas_3
       rect:
         serializedVersion: 2
-        x: 30
-        y: 0
-        width: 10
-        height: 16
+        x: 1
+        y: 37
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 31545ebc14bba4a46b4310c3c10d7a9a
-      internalID: 1860492404
+      spriteID: cae672fde42480640800000000000000
+      internalID: 5046356288987426476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_4
+      name: NumberFont(1) Atlas_4
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 10
-        height: 16
+        x: 25
+        y: 37
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 136d6c9e95c891d429cb8a2796a7ed8f
-      internalID: 700694631
+      spriteID: 5715a38398b9f4b20800000000000000
+      internalID: 3120884080447213941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_5
+      name: NumberFont(1) Atlas_5
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 10
-        height: 16
+        x: 49
+        y: 37
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 02db54fce1182a946880c5aa446282cd
-      internalID: -1472746268
+      spriteID: f9dc39e0782b28b90800000000000000
+      internalID: -7241028957723439713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_6
+      name: NumberFont(1) Atlas_6
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 10
-        height: 16
+        x: 73
+        y: 37
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 43fd05c08337701488d7f9ba65122583
-      internalID: 299353666
+      spriteID: 476a5e9b6529d7de0800000000000000
+      internalID: -1333749013448120716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_7
+      name: NumberFont(1) Atlas_7
       rect:
         serializedVersion: 2
-        x: 70
-        y: 0
-        width: 10
-        height: 16
+        x: 1
+        y: 1
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: af53530c62f7a2744a90208e45214d51
-      internalID: -1823975180
+      spriteID: 9ee2233e8277818e0800000000000000
+      internalID: -1722495839975100695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_8
+      name: NumberFont(1) Atlas_8
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 10
-        height: 16
+        x: 25
+        y: 1
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d5210d477d1919e47b922f2f2b2984fa
-      internalID: -1563149281
+      spriteID: d92aca869c48bb150800000000000000
+      internalID: 5889446938296492701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_9
+      name: NumberFont(1) Atlas_9
       rect:
         serializedVersion: 2
-        x: 90
-        y: 0
-        width: 10
-        height: 16
+        x: 49
+        y: 1
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 94d94b276555e634fb90eda42e669489
-      internalID: -35540678
+      spriteID: a19c50e930f10f620800000000000000
+      internalID: 2805776668248361242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NumberFont_10
+      name: NumberFont(1) Atlas_10
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 10
-        height: 16
+        x: 73
+        y: 1
+        width: 22
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 18712d6404361194c88b540df4bf7958
-      internalID: -1019859602
+      spriteID: bd26fdb644348e150800000000000000
+      internalID: 5902041272815674075
       vertices: []
       indices: 
       edges: []
@@ -345,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: af35aee65ffe52842b25185ee72067e2
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -353,21 +383,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":11.0,"y":1.0},"gridSpriteSize":{"x":10.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      NumberFont_0: -121899859186592416
-      NumberFont_1: -414538053
-      NumberFont_10: -1019859602
-      NumberFont_2: 1691857564
-      NumberFont_3: 1860492404
-      NumberFont_4: 700694631
-      NumberFont_5: -1472746268
-      NumberFont_6: 299353666
-      NumberFont_7: -1823975180
-      NumberFont_8: -1563149281
-      NumberFont_9: -35540678
+      NumberFont(1) Atlas_0: 4921990738652465515
+      NumberFont(1) Atlas_1: -2039450110714356155
+      NumberFont(1) Atlas_10: 5902041272815674075
+      NumberFont(1) Atlas_2: -9093414541198523348
+      NumberFont(1) Atlas_3: 5046356288987426476
+      NumberFont(1) Atlas_4: 3120884080447213941
+      NumberFont(1) Atlas_5: -7241028957723439713
+      NumberFont(1) Atlas_6: -1333749013448120716
+      NumberFont(1) Atlas_7: -1722495839975100695
+      NumberFont(1) Atlas_8: 5889446938296492701
+      NumberFont(1) Atlas_9: 2805776668248361242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

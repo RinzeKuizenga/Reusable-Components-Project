@@ -30,7 +30,8 @@ public class HealthDisplay : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthText.text = $"{player.health.ToString()} / {player.maxHealth.ToString()}";
+        //healthText.text = $"{player.health.ToString()}/ {player.maxHealth.ToString()}";
+        healthText.text = $"{player.health.ToString()}";
         //staminaText.text = player1.stamina.ToString();
     }
 

@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameState goodState;
 
     public Action OnAttackFinished;
+    public Action OnPlayerDeath;
+
+    bool isDead = false;
 
     void Awake()
     {
@@ -29,11 +32,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anchorMovement.onFinishedMoving += HandleFinishMoving;
+        player.OnPlayerDeath += HandleDeath;
         GameStateManager.Instance.onStateChanged += HandleStateChanged;
     }
     void FixedUpdate()
     {
-        if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving)
+        if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving && !isDead)
         {
             freeMovement.Move(_input.GetInput());
         }
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleStateChanged(GameState newState)
     {
+        if (isDead) return;
         freeMovement.StopMove();
         switch (newState)
         {
@@ -73,8 +78,14 @@ public class PlayerController : MonoBehaviour
 
     void HandleAttackChosen(AttackCommand command)
     {
+        Debug.Log("HANDLE ATTACK");
         command.target.Damage(command.attack.damage);
         OnAttackFinished?.Invoke();
+    }
+
+    void HandleDeath()
+    {
+        isDead = true;
     }
 
     private void OnDestroy()

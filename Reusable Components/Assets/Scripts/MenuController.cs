@@ -93,9 +93,9 @@ public class MenuController : MonoBehaviour
 
     void MoveArrow()
     {
-        Debug.Log($"Index: {selectedIndex}");
-        Debug.Log($"Positions Length: {currentPositions.Length}");
-        Debug.Log($"Option Count: {currentOptionCount}");
+       // Debug.Log($"Index: {selectedIndex}");
+       // Debug.Log($"Positions Length: {currentPositions.Length}");
+       // Debug.Log($"Option Count: {currentOptionCount}");
         if (currentState == MenuStates.Target)
         {
             targetPosition = (Vector2)enemies[selectedIndex].transform.position + new Vector2(-1f, 0f);

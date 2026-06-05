@@ -7,13 +7,17 @@ public class EnemyController : MonoBehaviour
     AnchorMovement anchorMovement;
     Enemy enemy;
 
+    [SerializeField] private Grid grid;
+    Animator gridAnimator;
+
     public int enemyInt;
 
     void Awake()
     {
         anchorHolder = GetComponent<AnchorHolder>();
         anchorMovement = GetComponent<AnchorMovement>();
-        enemy = GetComponent<Enemy>();  
+        enemy = GetComponent<Enemy>();
+        gridAnimator = grid.GetComponent<Animator>();
     }
 
     private void Start()
@@ -28,19 +32,21 @@ public class EnemyController : MonoBehaviour
         {
             case GameState.EnemyTurn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
+                Instantiate(grid, transform.position, Quaternion.identity);
                 break;
             default:
+                gridAnimator.SetBool("Remove", true);
 
                 switch (enemyInt)
                 {
                     case 0:
-                        anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
+                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
                         break;
                     case 1:
-                        anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
+                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
                         break;
                     case 2:
-                        anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
+                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
                         break;
                 }
                 break;
@@ -49,7 +55,7 @@ public class EnemyController : MonoBehaviour
 
     void enemyDeath()
     {
-
+        Destroy(gameObject);
     }
 
     private void OnDestroy()
