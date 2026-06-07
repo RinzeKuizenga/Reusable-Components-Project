@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.luca3317.tmpeffects": "file:C:/Users/rinze/Downloads/TMPEffects-main(1)/TMPEffects-main/Package",
     "com.unity.2d.animation": "14.0.3",
     "com.unity.2d.aseprite": "4.0.1",
     "com.unity.2d.psdimporter": "13.0.2",

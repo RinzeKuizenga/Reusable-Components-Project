@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: 9035658012221442843}
   attacks:
   - attackName: Jump
-    damage: 4
+    damage: 10
     target: 0
   - attackName: Hammer
     damage: 8
@@ -91,16 +91,15 @@ MonoBehaviour:
     damage: 20
     staminaCost: 0
     target: 0
-  Enemies: []
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   menuSlots:
   - {x: -2.55, y: 2.4}
   - {x: -2.55, y: 1.7}
   - {x: -2.55, y: 1}
   - {x: -2.55, y: 0.3}
-  enemies:
-  - {x: 4.01, y: -1.56}
-  - {x: 2.1, y: -0.2}
-  - {x: 2.1, y: -3.19}
   players:
   - {x: -4.14, y: -0.64}
   - {x: -5.79, y: -2.62}
@@ -120,6 +119,7 @@ MonoBehaviour:
     damage: 0
     staminaCost: 0
     target: 0
+  currentPlayer: {fileID: 0}
 --- !u!1 &850048380367002938
 GameObject:
   m_ObjectHideFlags: 0

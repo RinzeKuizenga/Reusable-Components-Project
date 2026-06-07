@@ -6,7 +6,7 @@ public class DamageFeedback : MonoBehaviour
     private TextMeshPro damageText;
 
     bool isBig = false;
-    private float holdTime = 0.8f;  
+    private float holdTime = 1.1f;  
     private float elapsedTime = 0f;
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class DamageFeedback : MonoBehaviour
 
     public void DisplayDamage(int damage)
     {
-        damageText.text = damage.ToString();
+        damageText.text = $"<wave ampllitude=50>{damage.ToString()}";
     }
 
     private void Update()
@@ -49,6 +49,6 @@ public class DamageFeedback : MonoBehaviour
     {
         transform.position += Vector3.up * 0.7f;
         transform.position += Vector3.left * 0.9f;
-        Destroy(gameObject, 1.1f);
+        Destroy(gameObject, 1.5f);
     }
 }
