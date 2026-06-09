@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using Mono.Cecil;
 
 public class Grid : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class Grid : MonoBehaviour
     public bool isDangerous;
     public Action onAttackDone;
 
-    float difficulty;
-
-    IDamagable _damagable;
+  IDamagable _damagable;
+    int previousIndex = 0;
 
     private void Awake()
     {
@@ -34,21 +34,28 @@ public class Grid : MonoBehaviour
             SpriteRenderer spriteRenderer = gridTiles[j].GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = safeSprite;
         }
-        int dangerousGrid = UnityEngine.Random.Range(6, gridTiles.Count);
+        int dangerousGrid = UnityEngine.Random.Range(0, gridTiles.Count);
+        Debug.Log($"{dangerousGrid}");
 
         for (int i = 0; i < dangerousGrid; i++)
         {
             int randomIndex = UnityEngine.Random.Range(0, gridTiles.Count);
-
+            Debug.Log($"previous: {previousIndex} current: {randomIndex}");
+            while (randomIndex == previousIndex)
+            {
+                randomIndex = UnityEngine.Random.Range(0, gridTiles.Count);
+            }
             SpriteRenderer spriteRenderer = gridTiles[randomIndex].GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = dangerSprite;
+
+            previousIndex = randomIndex;
         }
     }
 
     IEnumerator AttackCoroutine(int enemyLevel)
     {
         float delay = Mathf.Max(1.5f, 5f - enemyLevel * 0.1f);
-        int attackAmount = UnityEngine.Random.Range(4, 9);
+        int attackAmount = UnityEngine.Random.Range(5, 9);
 
         for (int i = 0; i < attackAmount; i++)
         {
