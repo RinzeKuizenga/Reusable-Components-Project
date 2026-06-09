@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     [SerializeField] private int maxHealth;
 
+    public int level;
+
     public Action onEnemyDeath;
 
     public void Start()

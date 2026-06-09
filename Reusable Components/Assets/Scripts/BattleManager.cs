@@ -5,6 +5,7 @@ public class BattleManager : MonoBehaviour
 {
     PlayerController player1Controller;
     PlayerController player2Controller;
+    Grid grid;
 
     public void Awake()
     {
@@ -17,6 +18,12 @@ public class BattleManager : MonoBehaviour
 
    public void NextState()
     {
+        if (grid != null)
+        {
+            grid = GameObject.FindWithTag("Grid").GetComponent<Grid>();
+            grid.onAttackDone += NextState;
+        }
+
         Debug.Log($"CurrentState: {GameStateManager.Instance.CurrentState})");
         int index = (int)GameStateManager.Instance.CurrentState;
         GameStateManager.Instance.ChangeState((GameState)index + 1);

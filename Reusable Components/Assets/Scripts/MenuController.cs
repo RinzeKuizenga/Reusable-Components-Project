@@ -159,7 +159,7 @@ public class MenuController : MonoBehaviour
                     AttackCommand command = new AttackCommand();
 
                     command.attack = selectedAttack;
-                    command.target = enemies[selectedIndex];
+                    command.enemy = enemies[selectedIndex];
                     command.attacker = currentPlayer;
                     onAttackChosen?.Invoke(command);
                 }

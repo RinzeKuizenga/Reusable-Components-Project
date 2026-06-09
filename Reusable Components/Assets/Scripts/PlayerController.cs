@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     void HandleAttackChosen(AttackCommand command)
     {
         Debug.Log("HANDLE ATTACK");
-        command.target.Damage(command.attack.damage);
+        command.enemy.Damage(command.attack.damage);
         OnAttackFinished?.Invoke();
     }
 

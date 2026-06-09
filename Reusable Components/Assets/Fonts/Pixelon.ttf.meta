@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: c429d6f119519d74d9dd158fa3480e19
+guid: d073fa6e6bb92f349994c8ee8dfa9f5a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 32
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Pix32
+  - Pixelon
   fallbackFontReferences: []
-  customCharacters: 187
+  customCharacters: 
   fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0

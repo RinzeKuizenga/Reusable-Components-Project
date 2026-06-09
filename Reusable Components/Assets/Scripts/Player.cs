@@ -18,6 +18,8 @@ public class Player : MonoBehaviour, IDamagable
     //public Action OnStamindaUsed;
     public Action OnPlayerDeath;
 
+    public int level;
+
     private void Awake()
     {
         health = maxHealth;

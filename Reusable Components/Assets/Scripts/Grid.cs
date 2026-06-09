@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Collections;
+using System;
 
 public class Grid : MonoBehaviour
 {
@@ -8,19 +9,55 @@ public class Grid : MonoBehaviour
 
     public Sprite safeSprite;
     public Sprite dangerSprite;
+    public bool isDangerous;
+    public Action onAttackDone;
+
+    float difficulty;
+
+    IDamagable _damagable;
 
     private void Awake()
     {
-        //gridTiles.ForEach(GetComponent<SpriteRenderer>());
-        //gridTiles.ForEach(GetComponent<BoxCollider2D>());
+        _damagable = GetComponent<IDamagable>();
+
+    }
+
+    public void Attack(int enemylevel)
+    {
+        StartCoroutine(AttackCoroutine(enemylevel));
     }
 
     void ChooseGrids()
     {
-        int index = Random.Range(0, gridTiles.Count);
-        for (int i = 0; i < index; i++)
+        for (int j = 0; j < gridTiles.Count; j++)
         {
-
+            SpriteRenderer spriteRenderer = gridTiles[j].GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = safeSprite;
         }
+        int dangerousGrid = UnityEngine.Random.Range(6, gridTiles.Count);
+
+        for (int i = 0; i < dangerousGrid; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, gridTiles.Count);
+
+            SpriteRenderer spriteRenderer = gridTiles[randomIndex].GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = dangerSprite;
+        }
+    }
+
+    IEnumerator AttackCoroutine(int enemyLevel)
+    {
+        float delay = Mathf.Max(1.5f, 5f - enemyLevel * 0.1f);
+        int attackAmount = UnityEngine.Random.Range(4, 9);
+
+        for (int i = 0; i < attackAmount; i++)
+        {
+            Debug.Log("Grids Chosen");
+            ChooseGrids();
+            yield return new WaitForSeconds(delay);
+        }
+
+        onAttackDone?.Invoke();
+        Debug.Log("Next State");
     }
 }
