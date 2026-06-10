@@ -78,6 +78,7 @@ public class MenuController : MonoBehaviour
             selectedIndex = 0;
         }
         MoveArrow();
+        SFXPlayer.Instance.PlaySFX(1, 1f);
     }
     void MoveLeft()
     {
@@ -88,6 +89,7 @@ public class MenuController : MonoBehaviour
             selectedIndex = currentOptionCount - 1;
         }
         MoveArrow();
+        SFXPlayer.Instance.PlaySFX(1, 1f);
     }
 
 
@@ -125,6 +127,7 @@ public class MenuController : MonoBehaviour
 
     void Select()
     {
+        SFXPlayer.Instance.PlaySFX(0, 1f);
         switch (currentState)
         {
             case MenuStates.Main:
@@ -172,6 +175,7 @@ public class MenuController : MonoBehaviour
 
     void Back()
     {
+        SFXPlayer.Instance.PlaySFX(3, 1f);
         switch (currentState)
         {
             case MenuStates.Action:

@@ -36,7 +36,6 @@ public class Grid : MonoBehaviour
             spriteRenderer.sprite = safeSprite;
         }
         int dangerousGrid = UnityEngine.Random.Range(4, 8);
-        Debug.Log($"{dangerousGrid}");
 
         for (int i = 0; i < dangerousGrid; i++)
         {
@@ -55,16 +54,15 @@ public class Grid : MonoBehaviour
     IEnumerator AttackCoroutine(int enemyLevel)
     {
         float delay = Mathf.Max(1.5f, 4f - enemyLevel * 0.15f);
-        int attackAmount = UnityEngine.Random.Range(5, 9);
+        int attackAmount = UnityEngine.Random.Range(1, 4);
 
         for (int i = 0; i < attackAmount; i++)
         {
-            Debug.Log("Grids Chosen");
             ChooseGrids();
             yield return new WaitForSeconds(delay);
         }
 
         onAttackDone?.Invoke();
-        Debug.Log("Next State");
+        Destroy(gameObject);
     }
 }

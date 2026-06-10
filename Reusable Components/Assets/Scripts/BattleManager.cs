@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
@@ -15,9 +16,14 @@ public class BattleManager : MonoBehaviour
     {
         player1Controller = GameObject.FindWithTag("Player1").GetComponent<PlayerController>(); 
         player2Controller = GameObject.FindWithTag("Player2").GetComponent<PlayerController>();
+        enemies = FindObjectsOfType<EnemyController>().ToList();
 
         player1Controller.OnAttackFinished += NextState;
         player2Controller.OnAttackFinished += NextState;
+        foreach (EnemyController enemy in enemies)
+        {
+            enemy.onAttackFinished += NextState;
+        }
     }
 
    public void NextState()

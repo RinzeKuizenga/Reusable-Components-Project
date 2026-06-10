@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem.XR.Haptics;
 
 public class EnemyController : MonoBehaviour
@@ -8,7 +9,9 @@ public class EnemyController : MonoBehaviour
     Enemy enemy;
 
     [SerializeField] private Grid grid;
+    Grid currentGrid;
     Animator gridAnimator;
+    public Action onAttackFinished;
 
     public int enemyInt;
 
@@ -33,8 +36,9 @@ public class EnemyController : MonoBehaviour
         {
             case GameState.EnemyTurn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
-                Grid currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
+                currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
                 currentGrid.Attack(enemyInt);
+                currentGrid.onAttackDone += HandleAttackFinished;
                 break;
             default:
                 gridAnimator.SetBool("Remove", true);
@@ -53,6 +57,12 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    void HandleAttackFinished()
+    {
+        Debug.Log("Grid Finished");;
+        onAttackFinished?.Invoke();
     }
 
     void enemyDeath()

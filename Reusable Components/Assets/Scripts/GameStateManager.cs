@@ -21,8 +21,6 @@ public class GameStateManager : MonoBehaviour
     public static GameStateManager Instance;
     public event Action<GameState> onStateChanged;
 
-    [SerializeField] private MenuController menuController;
-
 
     private void Awake()
     {
