@@ -98,7 +98,8 @@ public class MenuController : MonoBehaviour
        // Debug.Log($"Option Count: {currentOptionCount}");
         if (currentState == MenuStates.Target)
         {
-            targetPosition = (Vector2)enemies[selectedIndex].transform.position + new Vector2(-1f, 0f);
+            if (currentTargetType == TargetType.Enemy) targetPosition = (Vector2)enemies[selectedIndex].transform.position + new Vector2(-1f, 0f);
+            else targetPosition = players[selectedIndex];
         }
         else
         {
@@ -227,6 +228,7 @@ public class MenuController : MonoBehaviour
                 }
                 else if (currentTargetType == TargetType.Ally)
                 {
+                    Debug.Log($"{currentTargetType}");
                     currentPositions = players;
                     currentOptionCount = players.Length;
                 }

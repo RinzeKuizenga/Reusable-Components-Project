@@ -5,13 +5,14 @@ using System;
 
 public enum GameState
 {
-    Idle,
 
     Player1Turn,
 
     Player2Turn,
 
-    EnemyTurn
+    EnemyTurn,
+
+    Idle
 }
 
 public class GameStateManager : MonoBehaviour

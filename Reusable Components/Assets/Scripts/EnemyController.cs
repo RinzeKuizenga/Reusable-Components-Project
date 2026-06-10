@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
             case GameState.EnemyTurn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
                 Grid currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
-                currentGrid.Attack(enemy.level);
+                currentGrid.Attack(enemyInt);
                 break;
             default:
                 gridAnimator.SetBool("Remove", true);

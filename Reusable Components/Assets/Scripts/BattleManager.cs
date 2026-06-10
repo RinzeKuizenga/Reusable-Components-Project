@@ -1,11 +1,15 @@
 using Unity.Mathematics;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
     PlayerController player1Controller;
     PlayerController player2Controller;
-    Grid grid;
+    List<EnemyController> enemies;
+
+
+    public int currentTurnIndex;
 
     public void Awake()
     {
@@ -18,16 +22,14 @@ public class BattleManager : MonoBehaviour
 
    public void NextState()
     {
-        if (grid != null)
-        {
-            grid = GameObject.FindWithTag("Grid").GetComponent<Grid>();
-            grid.onAttackDone += NextState;
-        }
-
         Debug.Log($"CurrentState: {GameStateManager.Instance.CurrentState})");
-        int index = (int)GameStateManager.Instance.CurrentState;
-        GameStateManager.Instance.ChangeState((GameState)index + 1);
-        Debug.Log($"States:{index})");
+
+        currentTurnIndex = (int)GameStateManager.Instance.CurrentState;
+        GameStateManager.Instance.ChangeState((GameState)currentTurnIndex + 1);
+
+        if (currentTurnIndex > 4) currentTurnIndex = 0;
+
+
         Debug.Log($"Going to State: {GameStateManager.Instance.CurrentState})");
     }
 }
