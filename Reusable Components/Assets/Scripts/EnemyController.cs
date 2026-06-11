@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem.XR.Haptics;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, ITurnTaker
 {
     AnchorHolder anchorHolder;
     AnchorMovement anchorMovement;
@@ -26,35 +26,31 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        GameStateManager.Instance.onStateChanged += HandleStateChanged;
         enemy.onEnemyDeath += enemyDeath;
     }
 
-    void HandleStateChanged(GameState newState)
+    public void StartTurn()
     {
-        switch (newState)
-        {
-            case GameState.EnemyTurn:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
-                currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
-                currentGrid.Attack(enemyInt);
-                currentGrid.onAttackDone += HandleAttackFinished;
-                break;
-            default:
-                gridAnimator.SetBool("Remove", true);
+        Debug.Log($"{name} turn started");
+        anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
 
-                switch (enemyInt)
-                {
-                    case 0:
-                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
-                        break;
-                    case 1:
-                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
-                        break;
-                    case 2:
-                        this.anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
-                        break;
-                }
+        currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
+        currentGrid.Attack(enemyInt);
+        currentGrid.onAttackDone += HandleAttackFinished;
+    }
+
+    public void MoveToIdle()
+    {
+        switch (enemyInt)
+        {
+            case 0:
+                this.anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
+                break;
+            case 1:
+                this.anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
+                break;
+            case 2:
+                this.anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
                 break;
         }
     }
@@ -72,6 +68,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameStateManager.Instance.onStateChanged -= HandleStateChanged;
+        
     }
 }

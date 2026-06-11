@@ -246,7 +246,6 @@ public class MenuController : MonoBehaviour
 
     void DisplayText()
     {
-        Debug.Log("Text displayed");
         for (int i = 0; i < optionsText.Count; i++)
         {
             string text = "";

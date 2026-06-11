@@ -23,12 +23,12 @@ public class Player : MonoBehaviour, IDamagable
     private void Awake()
     {
         health = maxHealth;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
     public void Damage(int damage)
     {
         if (health <= 0) return;
         health -= damage;
-        health = Mathf.Clamp(health, 0, maxHealth);
 
         DamageFeedback damageFeedback = Instantiate(damagePrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(damage);
@@ -36,5 +36,14 @@ public class Player : MonoBehaviour, IDamagable
         OnDamageTaken?.Invoke();
 
         if (health <= 0) OnPlayerDeath?.Invoke();
+    }
+
+    public void Heal(int points)
+    {
+        if (health <= 0) return;
+        health += points;
+
+
+
     }
 }

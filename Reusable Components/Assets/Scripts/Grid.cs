@@ -35,7 +35,7 @@ public class Grid : MonoBehaviour
             SpriteRenderer spriteRenderer = gridTiles[j].GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = safeSprite;
         }
-        int dangerousGrid = UnityEngine.Random.Range(4, 8);
+        int dangerousGrid = UnityEngine.Random.Range(3, 5);
 
         for (int i = 0; i < dangerousGrid; i++)
         {

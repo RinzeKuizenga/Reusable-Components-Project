@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem.XR.Haptics;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ITurnTaker
 {
     FreeMovement freeMovement;
     AnchorHolder anchorHolder;
@@ -33,36 +33,23 @@ public class PlayerController : MonoBehaviour
     {
         anchorMovement.onFinishedMoving += HandleFinishMoving;
         player.OnPlayerDeath += HandleDeath;
-        GameStateManager.Instance.onStateChanged += HandleStateChanged;
     }
+    public void StartTurn()
+    {
+        Debug.Log($"{name} turn started");
+        anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 16);
+    }
+
+    public void MoveToIdle()
+    {
+        anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 16);
+    }
+
     void FixedUpdate()
     {
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving && !isDead)
         {
             freeMovement.Move(_input.GetInput());
-        }
-    }
-
-    void HandleStateChanged(GameState newState)
-    {
-        if (isDead) return;
-        freeMovement.StopMove();
-        switch (newState)
-        {
-            case GameState.Player1Turn:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 16);
-                break;
-
-            case GameState.Player2Turn:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 16);
-                break;
-
-            case GameState.Idle:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 16);
-                break;
-            case GameState.EnemyTurn:
-                anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
-                break;
         }
     }
 
@@ -90,6 +77,5 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameStateManager.Instance.onStateChanged -= HandleStateChanged;
     }
 }

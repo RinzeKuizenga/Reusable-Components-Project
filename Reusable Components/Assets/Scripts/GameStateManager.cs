@@ -19,7 +19,6 @@ public class GameStateManager : MonoBehaviour
 {
     public GameState CurrentState { get; private set; }
     public static GameStateManager Instance;
-    public event Action<GameState> onStateChanged;
 
 
     private void Awake()
@@ -35,17 +34,11 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        SetIdleTurn();
-    }
-
     public void ChangeState(GameState newState)
     {
         if (CurrentState == newState) return;
 
-        CurrentState = newState;
-        onStateChanged?.Invoke(CurrentState);   
+        CurrentState = newState;  
         Debug.Log($"GameState: {newState}");
     }
 
