@@ -5,14 +5,14 @@ using System;
 
 public enum GameState
 {
+    Idle,
 
     Player1Turn,
 
     Player2Turn,
 
-    EnemyTurn,
+    EnemyTurn
 
-    Idle
 }
 
 public class GameStateManager : MonoBehaviour
@@ -33,11 +33,6 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        SetIdleTurn();
     }
 
     public void ChangeState(GameState newState)

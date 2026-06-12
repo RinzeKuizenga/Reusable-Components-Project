@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 
 public class BattleManager : MonoBehaviour
@@ -10,7 +11,9 @@ public class BattleManager : MonoBehaviour
     List<EnemyController> enemies;
 
 
+    List<ITurnTaker> turnOrder = new();
     public int currentTurnIndex;
+
 
     public void Awake()
     {
@@ -18,24 +21,54 @@ public class BattleManager : MonoBehaviour
         player2Controller = GameObject.FindWithTag("Player2").GetComponent<PlayerController>();
         enemies = FindObjectsOfType<EnemyController>().ToList();
 
-        player1Controller.OnAttackFinished += NextState;
-        player2Controller.OnAttackFinished += NextState;
+        player1Controller.OnAttackFinished += NextTurn;
+        player2Controller.OnAttackFinished += NextTurn;
         foreach (EnemyController enemy in enemies)
         {
-            enemy.onAttackFinished += NextState;
+            enemy.onAttackFinished += NextTurn;
         }
+
+        BuildTurnOrder();
     }
 
-   public void NextState()
+    void Start()
     {
-        Debug.Log($"CurrentState: {GameStateManager.Instance.CurrentState})");
+        StartCurrentTurn();
+    }
 
-        currentTurnIndex = (int)GameStateManager.Instance.CurrentState;
-        GameStateManager.Instance.ChangeState((GameState)currentTurnIndex + 1);
+    void BuildTurnOrder()
+    {
+        turnOrder.Clear();
 
-        if (currentTurnIndex > 4) currentTurnIndex = 0;
+        turnOrder.Add(player1Controller);
+        turnOrder.Add(player2Controller);
 
+        foreach (EnemyController enemy in enemies)
+            turnOrder.Add(enemy);
+    }
 
-        Debug.Log($"Going to State: {GameStateManager.Instance.CurrentState})");
+    void StartCurrentTurn()
+    {
+        ITurnTaker current = turnOrder[currentTurnIndex];
+
+        if (current == player1Controller)
+            GameStateManager.Instance.ChangeState(GameState.Player1Turn);
+        else if (current == player2Controller)
+            GameStateManager.Instance.ChangeState(GameState.Player2Turn);
+        else
+            GameStateManager.Instance.ChangeState(GameState.EnemyTurn);
+
+        current.StartTurn();
+        Debug.Log(GameStateManager.Instance.CurrentState);
+    }
+
+    public void NextTurn()
+    {
+        currentTurnIndex++;
+
+        if(currentTurnIndex >= turnOrder.Count)
+            currentTurnIndex = 0;
+
+        StartCurrentTurn();
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem.XR.Haptics;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ITurnTaker
 {
     FreeMovement freeMovement;
     AnchorHolder anchorHolder;
@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
     IInput _input;
 
     [SerializeField] private MenuController menuPrefab;
-    [SerializeField] private GameState goodState;
 
     public Action OnAttackFinished;
     public Action OnPlayerDeath;
 
     bool isDead = false;
+    bool isMyTurn;
 
     void Awake()
     {
@@ -29,12 +29,15 @@ public class PlayerController : MonoBehaviour
         _input = GetComponent<IInput>();
     }
 
-    private void Start()
+    void Start()
     {
+
         anchorMovement.onFinishedMoving += HandleFinishMoving;
         player.OnPlayerDeath += HandleDeath;
         GameStateManager.Instance.onStateChanged += HandleStateChanged;
+
     }
+
     void FixedUpdate()
     {
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving && !isDead)
@@ -43,6 +46,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void StartTurn()
+    {
+        isMyTurn = true;
+    }
     void HandleStateChanged(GameState newState)
     {
         if (isDead) return;
@@ -56,8 +63,7 @@ public class PlayerController : MonoBehaviour
             case GameState.Player2Turn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 16);
                 break;
-
-            case GameState.Idle:
+          case GameState.Idle:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 16);
                 break;
             case GameState.EnemyTurn:
@@ -68,18 +74,19 @@ public class PlayerController : MonoBehaviour
 
     void HandleFinishMoving()
     {
-        if (GameStateManager.Instance.CurrentState == goodState)
-        {
+        if (!isMyTurn) return;
+        
             MenuController menu = Instantiate(menuPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
             menu.WhichPlayer(this);
             menu.onAttackChosen += HandleAttackChosen;
-        }
+        
     }
 
     void HandleAttackChosen(AttackCommand command)
     {
         Debug.Log("HANDLE ATTACK");
         command.enemy.Damage(command.attack.damage);
+        isMyTurn = false;
         OnAttackFinished?.Invoke();
     }
 
