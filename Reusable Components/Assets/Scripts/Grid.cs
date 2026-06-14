@@ -2,25 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
-using Mono.Cecil;
+using UnityEngine.Tilemaps;
 
 public class Grid : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> gridTiles;
-
-    public Sprite safeSprite;
-    public Sprite dangerSprite;
-    public bool isDangerous;
     public Action onAttackDone;
 
-  IDamagable _damagable;
-    List<int> dangerousTiles = new();
-
-    private void Awake()
-    {
-        _damagable = GetComponent<IDamagable>();
-
-    }
+    List<GridTile> dangerousTiles = new();
+    [SerializeField] private List<GridTile> gridTiles;
 
     public void Attack(int enemylevel)
     {
@@ -30,24 +19,21 @@ public class Grid : MonoBehaviour
     void ChooseGrids()
     {
         dangerousTiles.Clear();
-        for (int j = 0; j < gridTiles.Count; j++)
+        foreach (GridTile tile in gridTiles)
         {
-            SpriteRenderer spriteRenderer = gridTiles[j].GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = safeSprite;
+            tile.SetDangerous(false);
         }
         int dangerousGrid = UnityEngine.Random.Range(4, 8);
 
         for (int i = 0; i < dangerousGrid; i++)
         {
-            int randomIndex = UnityEngine.Random.Range(0, gridTiles.Count);
-            while (dangerousTiles.Contains(randomIndex))
+            GridTile randomTile = gridTiles[UnityEngine.Random.Range(0, gridTiles.Count)];
+            while (dangerousTiles.Contains(randomTile))
             {
-                randomIndex = UnityEngine.Random.Range(0, gridTiles.Count);
+                randomTile = gridTiles[UnityEngine.Random.Range(0, gridTiles.Count)];
             }
-            SpriteRenderer spriteRenderer = gridTiles[randomIndex].GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = dangerSprite;
-
-            dangerousTiles.Add(randomIndex);
+            dangerousTiles.Add(randomTile);
+            randomTile.SetIdle();
         }
     }
 
@@ -59,10 +45,23 @@ public class Grid : MonoBehaviour
         for (int i = 0; i < attackAmount; i++)
         {
             ChooseGrids();
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(delay - 0.1f);
+
+            ShowDangerousTiles();
+
+            yield return new WaitForSeconds(0.1f);
         }
 
         onAttackDone?.Invoke();
         Destroy(gameObject);
+    }
+
+    void ShowDangerousTiles()
+    {
+        foreach(GridTile tile in dangerousTiles)
+        {
+            tile.SetDangerous(true);
+            tile.DamageAnythingInside();
+        }
     }
 }

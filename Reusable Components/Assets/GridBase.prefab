@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8229209302134551721}
   - component: {fileID: 6616536497592218523}
   - component: {fileID: 3220122128038703488}
+  - component: {fileID: 7903210433809748815}
   m_Layer: 0
   m_Name: Grid3
   m_TagString: Untagged
@@ -138,6 +139,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &7903210433809748815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123668493054184193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &1256773734021958101
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +168,7 @@ GameObject:
   - component: {fileID: 1301057369235581615}
   - component: {fileID: 2557685638944827666}
   - component: {fileID: 8414126390451077882}
+  - component: {fileID: 3375403400953593137}
   m_Layer: 0
   m_Name: Grid9
   m_TagString: Untagged
@@ -276,6 +296,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &3375403400953593137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256773734021958101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &2769209158601499239
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +325,7 @@ GameObject:
   - component: {fileID: 6428626058726209783}
   - component: {fileID: 5161259013070130035}
   - component: {fileID: 8252879265694070033}
+  - component: {fileID: 5851486483036358834}
   m_Layer: 0
   m_Name: Grid6
   m_TagString: Untagged
@@ -414,6 +453,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &5851486483036358834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769209158601499239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &3010793508982515047
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +482,7 @@ GameObject:
   - component: {fileID: 2891790808611603779}
   - component: {fileID: 2472315048717576963}
   - component: {fileID: 4471659850478288558}
+  - component: {fileID: 2746995683679308347}
   m_Layer: 0
   m_Name: Grid7
   m_TagString: Untagged
@@ -552,6 +610,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &2746995683679308347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010793508982515047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &4393994090368245578
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,17 +743,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grid
   gridTiles:
-  - {fileID: 5434603389751302533}
-  - {fileID: 4839882828090519206}
-  - {fileID: 1123668493054184193}
-  - {fileID: 8738111582839709288}
-  - {fileID: 7006677047322761754}
-  - {fileID: 2769209158601499239}
-  - {fileID: 3010793508982515047}
-  - {fileID: 7592982347591106284}
-  - {fileID: 1256773734021958101}
-  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
-  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  - {fileID: 5134064779087408}
+  - {fileID: 2687007584866872318}
+  - {fileID: 7903210433809748815}
+  - {fileID: 5225130534892223676}
+  - {fileID: 2207532277292870681}
+  - {fileID: 5851486483036358834}
+  - {fileID: 2746995683679308347}
+  - {fileID: 5855667355681879213}
+  - {fileID: 3375403400953593137}
 --- !u!95 &2352625135737350964
 Animator:
   serializedVersion: 7
@@ -711,6 +785,7 @@ GameObject:
   - component: {fileID: 7388415020907819524}
   - component: {fileID: 8132548621845082433}
   - component: {fileID: 747793286038531986}
+  - component: {fileID: 2687007584866872318}
   m_Layer: 0
   m_Name: Grid2
   m_TagString: Untagged
@@ -838,6 +913,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &2687007584866872318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839882828090519206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &5434603389751302533
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +942,7 @@ GameObject:
   - component: {fileID: 3194579089840634996}
   - component: {fileID: 2818348389454570298}
   - component: {fileID: 652922199684959425}
+  - component: {fileID: 5134064779087408}
   m_Layer: 0
   m_Name: Grid1
   m_TagString: Untagged
@@ -976,6 +1070,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &5134064779087408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5434603389751302533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &7006677047322761754
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1099,7 @@ GameObject:
   - component: {fileID: 3253610801640648034}
   - component: {fileID: 2427211391720947523}
   - component: {fileID: 780116893744166187}
+  - component: {fileID: 2207532277292870681}
   m_Layer: 0
   m_Name: Grid5
   m_TagString: Untagged
@@ -1114,6 +1227,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &2207532277292870681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006677047322761754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &7592982347591106284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1256,7 @@ GameObject:
   - component: {fileID: 8613572633125804541}
   - component: {fileID: 4629573200690956153}
   - component: {fileID: 1377345162318008591}
+  - component: {fileID: 5855667355681879213}
   m_Layer: 0
   m_Name: Grid8
   m_TagString: Untagged
@@ -1252,6 +1384,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &5855667355681879213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592982347591106284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10
 --- !u!1 &8738111582839709288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1413,7 @@ GameObject:
   - component: {fileID: 801357623483129169}
   - component: {fileID: 2076021281179946996}
   - component: {fileID: 6843157844267704471}
+  - component: {fileID: 5225130534892223676}
   m_Layer: 0
   m_Name: Grid4
   m_TagString: Untagged
@@ -1390,3 +1541,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.78125}
   m_EdgeRadius: 0
+--- !u!114 &5225130534892223676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738111582839709288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56441647a200d124ca5b0facb1b1e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridTile
+  IsDangerous: 0
+  spriteRenderer: {fileID: 0}
+  safeSprite: {fileID: -1533641171668172899, guid: 1fc6dc12747db7649a01a0cc5cebfed3, type: 3}
+  dangerSprite: {fileID: 850046167848586234, guid: 62f9c21c677e9924186300adcb7c222e, type: 3}
+  idleSprite: {fileID: -7141095304449076623, guid: 7096674e897608741b6763840ec44d76, type: 3}
+  damage: 10

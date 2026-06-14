@@ -31,10 +31,6 @@ public class BattleManager : MonoBehaviour
         BuildTurnOrder();
     }
 
-    void Start()
-    {
-        StartCurrentTurn();
-    }
 
     void BuildTurnOrder()
     {
@@ -47,7 +43,7 @@ public class BattleManager : MonoBehaviour
             turnOrder.Add(enemy);
     }
 
-    void StartCurrentTurn()
+    public void StartCurrentTurn()
     {
         ITurnTaker current = turnOrder[currentTurnIndex];
 

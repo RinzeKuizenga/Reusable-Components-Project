@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour, ITurnTaker
         anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
 
         currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
-        currentGrid.Attack(enemyInt);
+        currentGrid.Attack(enemy.level);
         currentGrid.onAttackDone += HandleAttackFinished;
     }
 
@@ -62,6 +62,18 @@ public class EnemyController : MonoBehaviour, ITurnTaker
     {
         Debug.Log("Grid Finished");;
         onAttackFinished?.Invoke();
+        switch (enemyInt)
+        {
+            case 0:
+                anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 6);
+                break;
+            case 1:
+                anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 6);
+                break;
+            case 2:
+                anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
+                break;
+        }
     }
 
     void enemyDeath()

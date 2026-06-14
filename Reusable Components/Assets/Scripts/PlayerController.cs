@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour, ITurnTaker
 
     void Start()
     {
+        GameStateManager.Instance.onStateChanged += HandleStateChanged; 
 
         anchorMovement.onFinishedMoving += HandleFinishMoving;
         player.OnPlayerDeath += HandleDeath;
-        GameStateManager.Instance.onStateChanged += HandleStateChanged;
 
     }
 
