@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d36acd0b369204d9d6a3fe399bb537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightSetup
-  level: 23
+  level: 1
   enemyprefab: {fileID: 4114673681492450252, guid: 07da54ef7f6a08740863a616a8cf8fed, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -2441,7 +2441,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 985740062}
-  - component: {fileID: 985740061}
   - component: {fileID: 985740063}
   - component: {fileID: 985740064}
   m_Layer: 0
@@ -2451,18 +2450,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &985740061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985740060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248a2465d2065124f85f7578ac014fae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
 --- !u!4 &985740062
 Transform:
   m_ObjectHideFlags: 0
@@ -2503,6 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f6c395e4e39fe45a2a027568c35474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
+  gameOverScreenPrefab: {fileID: 6634899800772269184, guid: c4f1ccb75cbe6d64c9524a1ae7a845de, type: 3}
 --- !u!1 &1012193289
 GameObject:
   m_ObjectHideFlags: 0

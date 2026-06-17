@@ -10,6 +10,7 @@ public class CharacterIcons : MonoBehaviour
     private void Start()
     {
         anchorMovement = GetComponent<AnchorMovement>();
+        anchorMovement.onFinishedMoving +=
     }
 
     public void MoveIcons(Vector2 target)

@@ -3,22 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static SceneLoader instance;
+    public static SceneLoader Instance;
 
     private void Awake()
     {
-        if(instance != null && instance != this)
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
-    }
-
-    private void Start()
-    {
         DontDestroyOnLoad(gameObject);
     }
 

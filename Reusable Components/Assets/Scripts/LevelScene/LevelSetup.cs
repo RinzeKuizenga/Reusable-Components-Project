@@ -25,7 +25,7 @@ public class LevelSetup : MonoBehaviour
             Debug.Log(levelSprites.Count);
             levelSprites[i].SetCompleted(true);
             //if (level  > levelSprites.Count) return;
-            characterIcons.MoveIcons(levelSprites[i + 1].transform.position);
+            characterIcons.MoveIcons(levelSprites[i + 1].transform.position);       
         }
     }
 

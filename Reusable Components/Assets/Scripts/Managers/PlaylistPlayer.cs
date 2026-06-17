@@ -1,8 +1,9 @@
 using NUnit.Framework;
-using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
 
 public class PlaylistPlayer : MonoBehaviour
@@ -35,7 +36,6 @@ public class PlaylistPlayer : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         index = UnityEngine.Random.Range(0, musics.Count);
-        PlayMusic(musics[index]);
     }
 
     private void Start()
@@ -52,13 +52,14 @@ public class PlaylistPlayer : MonoBehaviour
     {
         newmusic = musics[index];
         audioSource.clip = newmusic;
+        audioSource.volume = 0.036f;
         audioSource.Play(); 
 
         musicText.text = newmusic.name;
         animator.SetTrigger("Appear");
     }
 
-    void NextMusic()
+    public void NextMusic()
     {
         index++;
 
@@ -68,5 +69,29 @@ public class PlaylistPlayer : MonoBehaviour
         }
 
         PlayMusic(musics[index]);
+    }
+
+    public void FadeOut()
+    {
+        StartCoroutine(FadeOutCoroutine(2f)); 
+    }
+
+    IEnumerator FadeOutCoroutine(float duration)
+    {
+        float startVolume = audioSource.volume;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, timer / duration);
+
+            yield return null;
+        }
+
+        onMusicEnd -= NextMusic;
+        audioSource.volume = 0f;
+        audioSource.Stop();
     }
 }

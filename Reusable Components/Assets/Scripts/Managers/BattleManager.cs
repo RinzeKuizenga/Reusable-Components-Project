@@ -50,7 +50,12 @@ public class BattleManager : MonoBehaviour
 
     public void StartCurrentTurn()
     {
-        if (player1Controller.isDead && player2Controller.isDead) GameOverManager.Instance.GameOver(); 
+        if (player1Controller.isDead && player2Controller.isDead)
+        {
+            GameOverManager.Instance.GameOver();
+            PlaylistPlayer.Instance.FadeOut();
+            return;
+        }
         ITurnTaker current = turnOrder[currentTurnIndex];
 
         if (current == player1Controller)

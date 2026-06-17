@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager Instance;
+
+    [SerializeField] private GameObject gameOverScreenPrefab;
+
 
 
     private void Awake()
@@ -11,7 +15,6 @@ public class GameOverManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -22,7 +25,7 @@ public class GameOverManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER");
-        Instantiate(Instance, transform.position, Quaternion.identity);
+        Instantiate(gameOverScreenPrefab, transform.position, Quaternion.identity);
     }
 
 }

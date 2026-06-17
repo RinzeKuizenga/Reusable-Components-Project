@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelBar.unity
     guid: ede51c6662167cc41b1d460bdbd7222a
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9da48ddfb44dea748b6cb0aa29f13b11
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

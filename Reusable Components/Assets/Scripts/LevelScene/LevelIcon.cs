@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class LevelIcon : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class LevelIcon : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         transform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        
     }
 
     public void SetCompleted(bool completed)

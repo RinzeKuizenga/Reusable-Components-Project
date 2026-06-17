@@ -13,6 +13,7 @@ public class FightSetup : MonoBehaviour
         Debug.Log("FightSetup spawning enemies");
         SpawnEnemies();
         FindObjectOfType<BattleManager>().SetupBattle();
+        PlaylistPlayer.Instance.NextMusic();
     }
 
     void SpawnEnemies()

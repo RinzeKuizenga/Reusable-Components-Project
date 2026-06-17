@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     void HandleDeath()
     {
         isDead = true;
+        freeMovement.StopMove();
     }
 
     private void OnDestroy()
