@@ -57,6 +57,7 @@ public class MenuController : MonoBehaviour
     public PlayerController currentPlayer;
 
     public event Action<AttackCommand> onAttackChosen;
+    public event Action<ItemCommand> onItemChosen;
 
     private void Awake()
     {
@@ -167,7 +168,20 @@ public class MenuController : MonoBehaviour
                     command.attacker = currentPlayer;
                     onAttackChosen?.Invoke(command);
                 }
-                Destroy(gameObject);
+                else if (currentTargetType == TargetType.Ally)
+                {
+                    ItemCommand command = new ItemCommand();    
+                    command.item = selectedItem;
+                    command.player = GetTargetPlayer(selectedIndex);
+                    if(command.player.health == command.player.maxHealth)
+                    {
+                        SFXPlayer.Instance.PlaySFX(4, 1f);
+                        return;
+                    }
+                    command.user = currentPlayer;
+                    onItemChosen?.Invoke(command);
+                }
+                    Destroy(gameObject);
                 break;
         }
         selectedIndex = 0;
@@ -325,5 +339,15 @@ public class MenuController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
             Back();
+    }
+
+    Player GetTargetPlayer(int index)
+    {
+        PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+
+        if (index < 0 || index >= playerControllers.Length)
+            return null;
+
+        return playerControllers[index].GetComponent<Player>();
     }
 }

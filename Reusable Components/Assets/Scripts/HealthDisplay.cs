@@ -26,6 +26,7 @@ public class HealthDisplay : MonoBehaviour
         UpdateHealth();
 
         player.OnDamageTaken += UpdateHealth;
+        player.OnHealed += UpdateHealth;
     }
 
     public void UpdateHealth()

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     public Action OnAttackFinished;
     public Action OnPlayerDeath;
 
-    bool isDead = false;
+    public bool isDead = false;
     bool isMyTurn;
 
     void Awake()
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
             MenuController menu = Instantiate(menuPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
             menu.WhichPlayer(this);
             menu.onAttackChosen += HandleAttackChosen;
+            menu.onItemChosen += HandleItemChosen;
         
     }
 
@@ -86,6 +87,14 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     {
         Debug.Log("HANDLE ATTACK");
         command.enemy.Damage(command.attack.damage);
+        isMyTurn = false;
+        OnAttackFinished?.Invoke();
+    }
+
+    void HandleItemChosen(ItemCommand command)
+    {
+        Debug.Log("HANDLE ITEM");
+        command.player.Heal(command.item.effective);
         isMyTurn = false;
         OnAttackFinished?.Invoke();
     }

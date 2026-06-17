@@ -21,12 +21,14 @@ public class EnemyController : MonoBehaviour, ITurnTaker
         anchorMovement = GetComponent<AnchorMovement>();
         enemy = GetComponent<Enemy>();
         gridAnimator = grid.GetComponent<Animator>();
+
     }
 
     void Start()
     {
         GameStateManager.Instance.onStateChanged += HandleStateChanged;
         enemy.onEnemyDeath += enemyDeath;
+        enemyInt = enemy.enemyIndex;
     }
     public void StartTurn()
     {

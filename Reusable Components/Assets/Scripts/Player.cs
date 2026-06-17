@@ -8,6 +8,7 @@ using System;
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] private DamageFeedback damagePrefab;
+    [SerializeField] private DamageFeedback healthPrefab;
     public int health { get; set; }
 
     public int stamina;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour, IDamagable
     public int maxHealth;
 
     public Action OnDamageTaken;
+    public Action OnHealed;
     //public Action OnStamindaUsed;
     public Action OnPlayerDeath;
 
@@ -36,5 +38,17 @@ public class Player : MonoBehaviour, IDamagable
         OnDamageTaken?.Invoke();
 
         if (health <= 0) OnPlayerDeath?.Invoke();
+    }
+
+    public void Heal(int points)
+    {
+        if (health <= 0) return;
+        health += points;
+        health = Mathf.Clamp(health, 0, maxHealth);
+
+        DamageFeedback damageFeedback = Instantiate(healthPrefab, transform.position + Vector3.up, Quaternion.identity);
+        damageFeedback.DisplayDamage(points);
+
+        OnHealed?.Invoke();
     }
 }
