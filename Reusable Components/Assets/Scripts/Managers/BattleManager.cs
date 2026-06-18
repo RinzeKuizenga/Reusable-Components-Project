@@ -113,6 +113,7 @@ public class BattleManager : MonoBehaviour
         {
             GameOverManager.Instance.GameOver();
             PlaylistPlayer.Instance.FadeOut();
+            GameProgress.Instance.ResetProgress();
             return;
         }
     }

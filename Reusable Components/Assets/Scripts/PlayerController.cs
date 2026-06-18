@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     public bool isDead = false;
     bool isMyTurn;
 
+    [SerializeField] private ControlHint controlHintPrefab;
+
+    private bool hasShownControlHint;
+
     void Awake()
     {
         freeMovement = GetComponent<FreeMovement>();
@@ -42,6 +46,11 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     {
         if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving && !isDead)
         {
+            if (!hasShownControlHint)
+            {
+                ShowControlHint();
+            }
+
             freeMovement.Move(_input.GetInput());
         }
     }
@@ -53,7 +62,14 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     void HandleStateChanged(GameState newState)
     {
         if (isDead) return;
+
         freeMovement.StopMove();
+
+        if (newState != GameState.EnemyTurn)
+        {
+            hasShownControlHint = false;
+        }
+
         switch (newState)
         {
             case GameState.Player1Turn:
@@ -63,9 +79,11 @@ public class PlayerController : MonoBehaviour, ITurnTaker
             case GameState.Player2Turn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(1), 16);
                 break;
-          case GameState.Idle:
+
+            case GameState.Idle:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(2), 16);
                 break;
+
             case GameState.EnemyTurn:
                 anchorMovement.MoveTo(anchorHolder.GetAnchor(3), 6);
                 break;
@@ -103,6 +121,14 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     {
         isDead = true;
         freeMovement.StopMove();
+    }
+
+    void ShowControlHint()
+    {
+        hasShownControlHint = true;
+
+        ControlHint hint = Instantiate(controlHintPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+        hint.Setup(transform);
     }
 
     private void OnDestroy()

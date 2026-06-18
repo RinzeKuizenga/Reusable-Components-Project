@@ -4,29 +4,37 @@ using System;
 public class CharacterIcons : MonoBehaviour
 {
     public bool finishedMoving;
-    AnchorMovement anchorMovement;
 
-    [SerializeField] private Vector2 offset = new Vector2(-0.5f, 2);
+    private AnchorMovement anchorMovement;
+
+    [SerializeField] private Vector2 offset = new Vector2(-0.5f, 2f);
+
     public Action OnFinishedMoving;
 
-
-    private void Start()
+    private void Awake()
     {
         anchorMovement = GetComponent<AnchorMovement>();
+
+        if (anchorMovement == null)
+        {
+            Debug.LogError("CharacterIcons could not find an AnchorMovement component.", gameObject);
+            return;
+        }
+
         anchorMovement.onFinishedMoving += HandleTransition;
         finishedMoving = false;
     }
 
     public void MoveIcons(Vector2 target)
     {
-        anchorMovement.MoveTo(target + offset, 4);
+        if (anchorMovement == null) return;
+
+        anchorMovement.MoveTo(target + offset, 2);
     }
 
-    void HandleTransition()
+    private void HandleTransition()
     {
         finishedMoving = true;
         OnFinishedMoving?.Invoke();
     }
-
-
 }

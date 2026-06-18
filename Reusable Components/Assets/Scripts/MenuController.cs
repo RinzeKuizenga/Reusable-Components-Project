@@ -1,9 +1,10 @@
 
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum MenuStates
 {
@@ -39,6 +40,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Vector2[] players;
 
     [SerializeField] private GameObject menuBackground;
+    [SerializeField] private GameObject AKey;
+    [SerializeField] private GameObject DKey;
     [SerializeField] private Transform arrowTrans;
 
     Vector2[] currentPositions;
@@ -215,6 +218,8 @@ public class MenuController : MonoBehaviour
                 currentPositions = blocksPos;
                 currentOptionCount = blocks.Count;
                 menuBackground.SetActive(false);
+                AKey.SetActive(true);
+                DKey.SetActive(true);
                 break;
 
             case MenuStates.Action:
@@ -235,6 +240,8 @@ public class MenuController : MonoBehaviour
                 }
                 DisplayText();
                 menuBackground.SetActive(true);
+                AKey.SetActive(false);
+                DKey.SetActive(false);
                 break;
 
             case MenuStates.Target:

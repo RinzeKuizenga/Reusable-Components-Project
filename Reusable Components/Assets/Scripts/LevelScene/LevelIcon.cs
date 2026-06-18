@@ -11,12 +11,17 @@ public class LevelIcon : MonoBehaviour
     [SerializeField] private Sprite completedSprite;
     [SerializeField] private Animator animator;
 
+    private void Awake()
+    {
+
+        animator = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         transform = GetComponent<Transform>();
-        animator = GetComponent<Animator>();
-        
+
     }
 
     public void SetCompleted(bool completed)

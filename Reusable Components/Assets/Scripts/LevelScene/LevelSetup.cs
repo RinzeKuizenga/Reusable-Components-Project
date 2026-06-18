@@ -18,39 +18,28 @@ public class LevelSetup : MonoBehaviour
     {
         characterIcons.OnFinishedMoving += PlayTransition;
         AssignCorrectSprites();
-        NextLevel();
+        StartCoroutine(NextLevelCoroutine());
     }
 
     void AssignCorrectSprites()
     {
-        for (int i = 0; i < level -1; i++)
+        int level = GameProgress.Instance.level;
+
+        for (int i = 0; i < levelSprites.Count; i++)
         {
-            Debug.Log(level);
-            Debug.Log(levelSprites.Count);
-            levelSprites[i].SetCompleted(true);
-            //if (level  > levelSprites.Count) return;
-            characterIcons.MoveIcons(levelSprites[i + 1].transform.position);       
+            levelSprites[i].SetCompleted(i < level - 1);
         }
+
+        int targetIndex = Mathf.Clamp(level - 1, 0, levelSprites.Count - 1);
+        characterIcons.MoveIcons(levelSprites[targetIndex].transform.position);
     }
 
-    void NextLevel()
-    {
-        StartCoroutine(NextLevelCoroutine());
-    }
-    
 
     IEnumerator NextLevelCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        level++;
-        if (level > levelSprites.Count)
-        {
-            LevelIcon lastLevelIcon = levelSprites[levelSprites.Count - 1];
-            lastLevelIcon.StopAnimator();
-
-            world++;
-        }
-        AssignCorrectSprites();
+        GameProgress.Instance.NextLevel();
+        AssignCorrectSprites(); 
     }
 
     void PlayTransition()

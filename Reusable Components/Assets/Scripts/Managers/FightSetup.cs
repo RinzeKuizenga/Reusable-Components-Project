@@ -13,7 +13,10 @@ public class FightSetup : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("FightSetup spawning enemies");
+        level = GameProgress.Instance.level;
+
+        Debug.Log("FightSetup level: " + level);
+
         SpawnEnemies();
         FindObjectOfType<BattleManager>().SetupBattle();
         PlaylistPlayer.Instance.NextMusic();
