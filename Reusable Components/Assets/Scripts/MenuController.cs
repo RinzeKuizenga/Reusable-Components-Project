@@ -176,12 +176,6 @@ public class MenuController : MonoBehaviour
                     ItemCommand command = new ItemCommand();    
                     command.item = selectedItem;
                     command.target = GetTargetPlayer(selectedIndex);
-
-                    if (command.target == null)
-                    {
-                        return;
-                    }
-
                     if (command.target.health >= command.target.MaxHealth)
                     {
                         SFXPlayer.Instance.PlaySFX(4, 1f);

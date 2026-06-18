@@ -34,6 +34,11 @@ public class LevelSetup : MonoBehaviour
         characterIcons.MoveIcons(levelSprites[targetIndex].transform.position);
     }
 
+    void PlayTransition()
+    {
+        Instantiate(transitionPrefab, transform.position, Quaternion.identity);
+        SFXPlayer.Instance.PlaySFX(5, 1f);
+    }
 
     IEnumerator NextLevelCoroutine()
     {
@@ -42,9 +47,4 @@ public class LevelSetup : MonoBehaviour
         AssignCorrectSprites(); 
     }
 
-    void PlayTransition()
-    {
-        Instantiate(transitionPrefab, transform.position, Quaternion.identity);
-        SFXPlayer.Instance.PlaySFX(5, 1f);
-    }
 }

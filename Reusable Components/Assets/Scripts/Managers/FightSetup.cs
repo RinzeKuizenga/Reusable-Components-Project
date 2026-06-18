@@ -7,7 +7,7 @@ using System.Collections;
 public class FightSetup : MonoBehaviour
 {
     public int level;
-    [SerializeField] private Enemy enemyprefab;
+    [SerializeField] private Enemy enemyPrefab;
 
     Vector2 enemySpawnPos = new Vector2(10, 0);
 
@@ -35,7 +35,7 @@ public class FightSetup : MonoBehaviour
 
         for(int i = 0; i < enemyAmount; i++)
         {
-            Enemy currentEnemy = Instantiate(enemyprefab, enemySpawnPos, Quaternion.identity);
+            Enemy currentEnemy = Instantiate(enemyPrefab, enemySpawnPos, Quaternion.identity);
             currentEnemy.level = level + 3;
             currentEnemy.enemyIndex = i;
         }

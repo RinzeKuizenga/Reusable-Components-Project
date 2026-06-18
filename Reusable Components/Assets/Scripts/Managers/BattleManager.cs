@@ -93,6 +93,23 @@ public class BattleManager : MonoBehaviour
         StartCurrentTurn();
     }
 
+    void HandleEnemyDied(EnemyController enemy)
+    {
+        if (battleEnded) return;
+        enemies.Remove(enemy);
+        turnOrder.Remove(enemy);
+
+        if (enemies.Count == 0)
+        {
+            Debug.Log("LOAD SCENE");
+            battleEnded = true;
+            SceneLoader.Instance.LoadScene("LevelBar");
+            return;
+        }
+
+        if (currentTurnIndex >= turnOrder.Count)
+            currentTurnIndex = 0;
+    }
     bool ShouldSkipTurn(ITurnTaker current)
     {
         if (current == player1Controller && player1Controller.isDead)
@@ -116,23 +133,6 @@ public class BattleManager : MonoBehaviour
             GameProgress.Instance.ResetProgress();
             return;
         }
-    }
-    void HandleEnemyDied(EnemyController enemy)
-    {
-        if (battleEnded) return;
-        enemies.Remove(enemy);
-        turnOrder.Remove(enemy);
-
-        if (enemies.Count == 0)
-        {
-            Debug.Log("LOAD SCENE");
-            battleEnded = true;
-            SceneLoader.Instance.LoadScene("LevelBar");
-            return;
-        }
-
-        if (currentTurnIndex >= turnOrder.Count)
-            currentTurnIndex = 0;
     }
 
 }
