@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using System.Collections;
 
 public class LevelSetup : MonoBehaviour
 {
@@ -9,12 +11,14 @@ public class LevelSetup : MonoBehaviour
 
     [SerializeField] private List<LevelIcon> levelSprites;
     [SerializeField] private CharacterIcons characterIcons;
+    [SerializeField] private GameObject transitionPrefab;
 
 
     private void Start()
     {
-        Debug.Log(level);
+        characterIcons.OnFinishedMoving += PlayTransition;
         AssignCorrectSprites();
+        NextLevel();
     }
 
     void AssignCorrectSprites()
@@ -29,8 +33,15 @@ public class LevelSetup : MonoBehaviour
         }
     }
 
-    public void NextLevel()
+    void NextLevel()
     {
+        StartCoroutine(NextLevelCoroutine());
+    }
+    
+
+    IEnumerator NextLevelCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
         level++;
         if (level > levelSprites.Count)
         {
@@ -40,6 +51,11 @@ public class LevelSetup : MonoBehaviour
             world++;
         }
         AssignCorrectSprites();
+    }
 
+    void PlayTransition()
+    {
+        Instantiate(transitionPrefab, transform.position, Quaternion.identity);
+        SFXPlayer.Instance.PlaySFX(5, 1f);
     }
 }

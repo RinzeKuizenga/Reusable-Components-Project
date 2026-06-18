@@ -25,7 +25,7 @@ public class GameOverManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER");
-        Instantiate(gameOverScreenPrefab, transform.position, Quaternion.identity);
+        if (gameOverScreenPrefab != null) Instantiate(gameOverScreenPrefab, transform.position, Quaternion.identity);
     }
 
 }

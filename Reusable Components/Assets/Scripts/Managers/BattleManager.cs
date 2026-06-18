@@ -1,8 +1,11 @@
-using Unity.Mathematics;
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class BattleManager : MonoBehaviour
 {
@@ -13,6 +16,9 @@ public class BattleManager : MonoBehaviour
 
     List<ITurnTaker> turnOrder = new();
     public int currentTurnIndex;
+    public float waitTime;
+
+    bool battleEnded;
 
     public void SetupBattle()
     {
@@ -25,6 +31,7 @@ public class BattleManager : MonoBehaviour
         foreach (EnemyController enemy in enemies)
         {
             enemy.onAttackFinished += NextTurn;
+            enemy.onEnemyDied += HandleEnemyDied;
         }
         BuildTurnOrder();
         Debug.Log("BattleManager finding enemies");
@@ -50,12 +57,8 @@ public class BattleManager : MonoBehaviour
 
     public void StartCurrentTurn()
     {
-        if (player1Controller.isDead && player2Controller.isDead)
-        {
-            GameOverManager.Instance.GameOver();
-            PlaylistPlayer.Instance.FadeOut();
-            return;
-        }
+        CheckForGameOver();
+
         ITurnTaker current = turnOrder[currentTurnIndex];
 
         if (current == player1Controller)
@@ -72,6 +75,12 @@ public class BattleManager : MonoBehaviour
 
     public void NextTurn()
     {
+        StartCoroutine(NextTurnCoroutine(0.5f));
+    }
+
+    IEnumerator NextTurnCoroutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         do
         {
             currentTurnIndex++;
@@ -97,4 +106,32 @@ public class BattleManager : MonoBehaviour
 
         return false;
     }
+
+    void CheckForGameOver()
+    {
+        if (player1Controller.isDead && player2Controller.isDead)
+        {
+            GameOverManager.Instance.GameOver();
+            PlaylistPlayer.Instance.FadeOut();
+            return;
+        }
+    }
+    void HandleEnemyDied(EnemyController enemy)
+    {
+        if (battleEnded) return;
+        enemies.Remove(enemy);
+        turnOrder.Remove(enemy);
+
+        if (enemies.Count == 0)
+        {
+            Debug.Log("LOAD SCENE");
+            battleEnded = true;
+            SceneLoader.Instance.LoadScene("LevelBar");
+            return;
+        }
+
+        if (currentTurnIndex >= turnOrder.Count)
+            currentTurnIndex = 0;
+    }
+
 }

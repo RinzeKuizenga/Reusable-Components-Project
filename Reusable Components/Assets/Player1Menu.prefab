@@ -883,10 +883,10 @@ MonoBehaviour:
   - {fileID: 7562152263977741123}
   attacks:
   - attackName: Jump
-    damage: 10
+    damage: 5
     target: 0
   - attackName: Hammer
-    damage: 8
+    damage: 10
     target: 0
   items:
   - itemName: Health Potion
@@ -907,7 +907,7 @@ MonoBehaviour:
     target: 1
   supers:
   - superName: Spin Top
-    damage: 20
+    damage: 30
     staminaCost: 0
     target: 0
   enemies:

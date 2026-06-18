@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private EnemyData enemyData;
 
     [SerializeField] private DamageFeedback damagePrefab;
+    [SerializeField] private GameObject cloudPrefab;
     public int health { get; set; }
     int maxHealth;
     public int level;
@@ -46,7 +47,10 @@ public class Enemy : MonoBehaviour, IDamagable
 
         DamageFeedback damageFeedback = Instantiate(damagePrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(damage);
+
+        Instantiate(cloudPrefab, transform.position, Quaternion.identity);
         if (health <= 0) onEnemyDeath?.Invoke();
+        SFXPlayer.Instance.PlaySFX(6, 1);
         Debug.Log($"{health}");
     }
 }

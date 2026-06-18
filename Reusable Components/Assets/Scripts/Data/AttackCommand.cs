@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackCommand : MonoBehaviour
+public class AttackCommand 
 {
     public AttackData attack;
     public Enemy enemy;

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] private DamageFeedback damagePrefab;
     [SerializeField] private DamageFeedback healthPrefab;
+    [SerializeField] private GameObject cloudPrefab;
+    [SerializeField] private GameObject healPrefab;
     public int health { get; set; }
 
     public int stamina;
@@ -35,7 +37,10 @@ public class Player : MonoBehaviour, IDamagable
         DamageFeedback damageFeedback = Instantiate(damagePrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(damage);
 
+        Instantiate(cloudPrefab, transform.position, Quaternion.identity);
+
         OnDamageTaken?.Invoke();
+        SFXPlayer.Instance.PlaySFX(6, 1);
 
         if (health <= 0) OnPlayerDeath?.Invoke();
     }
@@ -49,6 +54,9 @@ public class Player : MonoBehaviour, IDamagable
         DamageFeedback damageFeedback = Instantiate(healthPrefab, transform.position + Vector3.up, Quaternion.identity);
         damageFeedback.DisplayDamage(points);
 
+        Instantiate(healPrefab, transform.position, Quaternion.identity);
+
         OnHealed?.Invoke();
+        SFXPlayer.Instance.PlaySFX(7, 1);
     }
 }

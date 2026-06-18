@@ -2,11 +2,14 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class FightSetup : MonoBehaviour
 {
     public int level;
     [SerializeField] private Enemy enemyprefab;
+
+    Vector2 enemySpawnPos = new Vector2(10, 0);
 
     private void Start()
     {
@@ -14,6 +17,13 @@ public class FightSetup : MonoBehaviour
         SpawnEnemies();
         FindObjectOfType<BattleManager>().SetupBattle();
         PlaylistPlayer.Instance.NextMusic();
+        StartCoroutine(StartGameCoroutine());
+    }
+
+    IEnumerator StartGameCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        FindObjectOfType<BattleManager>().StartCurrentTurn();
     }
 
     void SpawnEnemies()
@@ -22,7 +32,7 @@ public class FightSetup : MonoBehaviour
 
         for(int i = 0; i < enemyAmount; i++)
         {
-            Enemy currentEnemy = Instantiate(enemyprefab, transform.position, Quaternion.identity);
+            Enemy currentEnemy = Instantiate(enemyprefab, enemySpawnPos, Quaternion.identity);
             currentEnemy.level = level + 3;
             currentEnemy.enemyIndex = i;
         }

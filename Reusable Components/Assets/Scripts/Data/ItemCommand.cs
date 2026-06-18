@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemCommand : MonoBehaviour
+public class ItemCommand 
 {
     public ItemData item;
     public Player player;

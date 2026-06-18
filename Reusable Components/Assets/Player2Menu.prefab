@@ -65,17 +65,14 @@ MonoBehaviour:
   - {fileID: 8292552284414260934}
   attacks:
   - attackName: Jump
-    damage: 4
+    damage: 5
     target: 0
   - attackName: Hammer
-    damage: 8
-    target: 0
-  - attackName: Hammer
-    damage: 8
+    damage: 10
     target: 0
   items:
   - itemName: Health Potion
-    effective: 20
+    effective: 12
     amount: 0
     target: 1
   - itemName: Revive

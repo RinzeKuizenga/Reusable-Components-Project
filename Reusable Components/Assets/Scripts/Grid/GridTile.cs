@@ -32,7 +32,6 @@ public class GridTile : MonoBehaviour
     {
         if (!IsDangerous) return;
 
-        Debug.Log("HIT");
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0f);
 
         foreach (Collider2D hit in hits)

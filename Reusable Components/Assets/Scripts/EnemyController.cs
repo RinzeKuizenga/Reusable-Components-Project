@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour, ITurnTaker
     Grid currentGrid;
     Animator gridAnimator;
     public Action onAttackFinished;
+    public Action<EnemyController> onEnemyDied;
 
     public int enemyInt;
 
@@ -80,6 +81,7 @@ public class EnemyController : MonoBehaviour, ITurnTaker
 
     void enemyDeath()
     {
+        onEnemyDied?.Invoke(this);
         Destroy(gameObject);
     }
 

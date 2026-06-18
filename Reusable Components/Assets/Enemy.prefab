@@ -186,6 +186,7 @@ MonoBehaviour:
   enemyIndex: 0
   enemyData: {fileID: 11400000, guid: 29109201ceafd024fa584792de9dd68c, type: 2}
   damagePrefab: {fileID: 1307369317432838002, guid: 417a7a4bc589c544c85fc89bf4e8ed1b, type: 3}
+  cloudPrefab: {fileID: 8183474173625781139, guid: 8f1357e4654597f45971e51b58803739, type: 3}
   level: 5
 --- !u!114 &3631601989483957038
 MonoBehaviour:

@@ -1080,6 +1080,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 403bbeae70219084abc939a21829f2c3, type: 3}
   - {fileID: 8300000, guid: 21a44be35a11e924a8dfc4add89ad9d5, type: 3}
   - {fileID: 8300000, guid: 59051dd59f2da4e49bbdb4e809ea5a14, type: 3}
+  - {fileID: 8300000, guid: 723b2bdf7cd09824885d3401a430bde2, type: 3}
+  - {fileID: 8300000, guid: b306f169afbcf1840b1681d50788e71a, type: 3}
+  - {fileID: 8300000, guid: 937d87c190bb59c4e95155863853e826, type: 3}
 --- !u!4 &420943361
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,11 +1092,11 @@ Transform:
   m_GameObject: {fileID: 420943358}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.65193003, y: 0.05255, z: -6.11603}
+  m_LocalPosition: {x: -0.77302, y: 0, z: -6.11603}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 985740062}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &437757294
 GameObject:
@@ -1265,6 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   currentTurnIndex: 0
+  waitTime: 1
 --- !u!4 &481244701
 Transform:
   m_ObjectHideFlags: 0
@@ -1624,7 +1628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &631595561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1975,6 +1979,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   damagePrefab: {fileID: 1307369317432838002, guid: 417a7a4bc589c544c85fc89bf4e8ed1b, type: 3}
   healthPrefab: {fileID: -3628237670256978067, guid: 97714d1980fa10444b97cad09224ffbc, type: 3}
+  cloudPrefab: {fileID: 8183474173625781139, guid: 8f1357e4654597f45971e51b58803739, type: 3}
+  healPrefab: {fileID: 2522278824946343351, guid: 21e9026f9fa78b94492c021c552557e1, type: 3}
   stamina: 0
   maxHealth: 20
   level: 0
@@ -2462,8 +2468,7 @@ Transform:
   m_LocalPosition: {x: -0.12109, y: -0.05255, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 420943361}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &985740063
@@ -2693,7 +2698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1060434427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3838,6 +3843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   damagePrefab: {fileID: 1307369317432838002, guid: 417a7a4bc589c544c85fc89bf4e8ed1b, type: 3}
   healthPrefab: {fileID: -3628237670256978067, guid: 97714d1980fa10444b97cad09224ffbc, type: 3}
+  cloudPrefab: {fileID: 8183474173625781139, guid: 8f1357e4654597f45971e51b58803739, type: 3}
+  healPrefab: {fileID: 2522278824946343351, guid: 21e9026f9fa78b94492c021c552557e1, type: 3}
   stamina: 0
   maxHealth: 25
   level: 0
@@ -4267,7 +4274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743872647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4488,6 +4495,7 @@ GameObject:
   - component: {fileID: 1757234031}
   - component: {fileID: 1757234030}
   - component: {fileID: 1757234033}
+  - component: {fileID: 1757234034}
   m_Layer: 5
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -4671,8 +4679,33 @@ AudioDistortionFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757234028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_DistortionLevel: 0.5
+--- !u!169 &1757234034
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757234028}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2002244933
 GameObject:
   m_ObjectHideFlags: 0
@@ -4782,7 +4815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2046776221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4909,4 +4942,5 @@ SceneRoots:
   - {fileID: 723032721}
   - {fileID: 1500747152}
   - {fileID: 1757234029}
+  - {fileID: 420943361}
   - {fileID: 1151239566}

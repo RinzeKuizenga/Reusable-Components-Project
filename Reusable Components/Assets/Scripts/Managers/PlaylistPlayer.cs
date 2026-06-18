@@ -50,9 +50,10 @@ public class PlaylistPlayer : MonoBehaviour
 
     void PlayMusic(AudioClip newmusic)
     {
+        if (audioSource.isPlaying) return;
         newmusic = musics[index];
         audioSource.clip = newmusic;
-        audioSource.volume = 0.036f;
+        audioSource.volume = 0.11f;
         audioSource.Play(); 
 
         musicText.text = newmusic.name;
@@ -70,6 +71,7 @@ public class PlaylistPlayer : MonoBehaviour
 
         PlayMusic(musics[index]);
     }
+
 
     public void FadeOut()
     {
