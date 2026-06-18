@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     void HandleItemChosen(ItemCommand command)
     {
         Debug.Log("HANDLE ITEM");
-        command.player.Heal(command.item.effective);
+        command.target.Heal(command.item.effective);
         isMyTurn = false;
         OnAttackFinished?.Invoke();
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using System;
 
-public class Player : MonoBehaviour, IDamagable
+public class Player : MonoBehaviour, IDamagable, IHealable
 {
     [SerializeField] private DamageFeedback damagePrefab;
     [SerializeField] private DamageFeedback healthPrefab;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamagable
     public int stamina;
 
     public int maxHealth;
+    public int MaxHealth => maxHealth;
 
     public Action OnDamageTaken;
     public Action OnHealed;

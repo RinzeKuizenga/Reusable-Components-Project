@@ -175,8 +175,14 @@ public class MenuController : MonoBehaviour
                 {
                     ItemCommand command = new ItemCommand();    
                     command.item = selectedItem;
-                    command.player = GetTargetPlayer(selectedIndex);
-                    if(command.player.health == command.player.maxHealth)
+                    command.target = GetTargetPlayer(selectedIndex);
+
+                    if (command.target == null)
+                    {
+                        return;
+                    }
+
+                    if (command.target.health >= command.target.MaxHealth)
                     {
                         SFXPlayer.Instance.PlaySFX(4, 1f);
                         return;
@@ -347,13 +353,15 @@ public class MenuController : MonoBehaviour
             Back();
     }
 
-    Player GetTargetPlayer(int index)
+    IHealable GetTargetPlayer(int index)
     {
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
 
         if (index < 0 || index >= playerControllers.Length)
             return null;
 
-        return playerControllers[index].GetComponent<Player>();
+        Player player = playerControllers[index].GetComponent<Player>();
+
+        return player;
     }
 }
