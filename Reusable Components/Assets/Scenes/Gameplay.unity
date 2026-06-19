@@ -1042,7 +1042,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   currentTurnIndex: 0
-  waitTime: 1
 --- !u!4 &481244701
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightSetup
   level: 1
-  enemyprefab: {fileID: 4114673681492450252, guid: 07da54ef7f6a08740863a616a8cf8fed, type: 3}
+  enemyPrefab: {fileID: 4114673681492450252, guid: 07da54ef7f6a08740863a616a8cf8fed, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1532,6 @@ GameObject:
   - component: {fileID: 723032725}
   - component: {fileID: 723032718}
   - component: {fileID: 723032728}
-  - component: {fileID: 723032722}
   - component: {fileID: 723032727}
   - component: {fileID: 723032726}
   m_Layer: 0
@@ -1649,24 +1647,6 @@ Transform:
   - {fileID: 2002244934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &723032722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723032717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f669a5e28662774a9dac9e27d3b018e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FreeMovement
-  movementSpeed: 3
-  verticalSpeed: 0.9
-  minX: -5.59
-  maxX: 1.42
-  minY: -3.8
-  maxY: 0.93
 --- !u!50 &723032723
 Rigidbody2D:
   serializedVersion: 5
@@ -2988,7 +2968,6 @@ GameObject:
   - component: {fileID: 1500747154}
   - component: {fileID: 1500747148}
   - component: {fileID: 1500747157}
-  - component: {fileID: 1500747147}
   - component: {fileID: 1500747156}
   - component: {fileID: 1500747155}
   m_Layer: 0
@@ -2998,24 +2977,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1500747147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500747146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f669a5e28662774a9dac9e27d3b018e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FreeMovement
-  movementSpeed: 3
-  verticalSpeed: 0.9
-  minX: -5.59
-  maxX: 1.42
-  minY: -3.8
-  maxY: 0.93
 --- !u!114 &1500747148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3725,6 +3686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1757234029}
   - component: {fileID: 1757234032}
+  - component: {fileID: 1757234035}
   - component: {fileID: 1757234031}
   - component: {fileID: 1757234030}
   - component: {fileID: 1757234033}
@@ -3939,6 +3901,29 @@ AudioLowPassFilter:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1757234035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757234028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 240, y: 160}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &2002244933
 GameObject:
   m_ObjectHideFlags: 0

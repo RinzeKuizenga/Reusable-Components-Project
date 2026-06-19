@@ -19,14 +19,13 @@ public class GameProgress : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void NextLevel()
+    public void NextLevel(int maxLevel)
     {
         level++;
 
-        if (level > 4) 
+        if (level > maxLevel)
         {
             level = 1;
-            world++;
         }
     }
 

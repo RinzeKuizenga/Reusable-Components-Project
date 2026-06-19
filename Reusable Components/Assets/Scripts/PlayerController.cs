@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour, ITurnTaker
 
     void Awake()
     {
-        freeMovement = GetComponent<FreeMovement>();
         anchorHolder = GetComponent<AnchorHolder>();
         anchorMovement = GetComponent<AnchorMovement>();
         player = GetComponent<Player>();
@@ -44,15 +43,15 @@ public class PlayerController : MonoBehaviour, ITurnTaker
 
     void FixedUpdate()
     {
-        if (GameStateManager.Instance.CurrentState == GameState.EnemyTurn && !anchorMovement.isMoving && !isDead)
+        if (GameStateManager.Instance.CurrentState != GameState.EnemyTurn ||
+            isDead ||
+            freeMovement == null ||
+            anchorMovement.isMoving)
         {
-            if (!hasShownControlHint)
-            {
-                ShowControlHint();
-            }
-
-            freeMovement.Move(_input.GetInput());
+            return;
         }
+
+        freeMovement.Move(_input.GetInput());
     }
 
     public void StartTurn()
@@ -61,9 +60,20 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     }
     void HandleStateChanged(GameState newState)
     {
-        if (isDead) return;
+        // Enemy starts attacking:
+        // add FreeMovement so players can dodge/run around.
+        if (newState == GameState.EnemyTurn && !isDead)
+        {
+            AddFreeMovement();
+        }
+        // Player turn or idle:
+        // remove FreeMovement so the player cannot walk during the menu.
+        else
+        {
+            RemoveFreeMovement();
+        }
 
-        freeMovement.StopMove();
+        if (isDead) return;
 
         if (newState != GameState.EnemyTurn)
         {
@@ -120,7 +130,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
     void HandleDeath()
     {
         isDead = true;
-        freeMovement.StopMove();
+        RemoveFreeMovement();
     }
 
     void ShowControlHint()
@@ -129,6 +139,26 @@ public class PlayerController : MonoBehaviour, ITurnTaker
 
         ControlHint hint = Instantiate(controlHintPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         hint.Setup(transform);
+    }
+
+    void AddFreeMovement()
+    {
+        if (freeMovement != null) return;
+
+        freeMovement = gameObject.AddComponent<FreeMovement>();
+
+        Debug.Log("FreeMovement toegevoegd: speler kan nu bewegen");
+    }
+
+    void RemoveFreeMovement()
+    {
+        if (freeMovement == null) return;
+
+        freeMovement.StopMove();
+        Destroy(freeMovement);
+        freeMovement = null;
+
+        Debug.Log("FreeMovement verwijderd: speler kan niet meer bewegen");
     }
 
     private void OnDestroy()
