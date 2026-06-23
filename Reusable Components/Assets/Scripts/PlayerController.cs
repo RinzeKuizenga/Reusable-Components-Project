@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour, ITurnTaker
         Destroy(freeMovement);
         freeMovement = null;
 
-        Debug.Log("FreeMovement verwijderd: speler kan niet meer bewegen");
+        Debug.Log("FreeMovemeent verwijderd: speler kan niet meer bewegen");
     }
 
     private void OnDestroy()

@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnchorHolder
   anchors:
   - {x: 3.38, y: -1.56}
-  - {x: 5.44, y: -1.56}
+  - {x: 5.45, y: -1.56}
   - {x: 3.55, y: -3.19}
   - {x: 3.55, y: 0.28}
 --- !u!114 &7017778108624985467

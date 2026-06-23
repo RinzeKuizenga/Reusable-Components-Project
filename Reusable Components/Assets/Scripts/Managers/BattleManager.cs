@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
     // Keeps track of whose turn is currently active in the turn order list.
     public int currentTurnIndex;
 
-    float waitTime;
+    public float timeBetweenTurns;
 
     // Prevents battle logic from continuing after the battle has ended.
     bool battleEnded;
@@ -93,7 +93,7 @@ public class BattleManager : MonoBehaviour
     public void NextTurn()
     {
         // Wait briefly before moving to the next turn for clearer battle pacing.
-        StartCoroutine(NextTurnCoroutine(0.5f));
+        StartCoroutine(NextTurnCoroutine(timeBetweenTurns));
     }
 
     IEnumerator NextTurnCoroutine(float duration)

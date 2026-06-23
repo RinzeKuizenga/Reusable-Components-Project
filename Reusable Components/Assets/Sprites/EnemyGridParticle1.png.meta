@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 34985003d3e76044997da81a4d542737
+guid: bf2106d9cb875c24793f6070118d4240
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3599711609032658026
-    second: HealthBackground_0
-  - first:
-      213: 5603177147635045765
-    second: HealthBackground_1
+      213: -7507246115660686396
+    second: EnemyGridParticle1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,14 +46,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
-  spriteExtrude: 0
+  spriteMode: 1
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -75,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealthBackground_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 7, y: 4, z: 7, w: 3}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69332c91d514b0ec0800000000000000
-      internalID: -3599711609032658026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HealthBackground_1
+      name: EnemyGridParticle1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 15
+        width: 30
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 7, y: 4, z: 7, w: 4}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5859f5acdeb72cd40800000000000000
-      internalID: 5603177147635045765
+      spriteID: 4cb1d92de67e0d790800000000000000
+      internalID: -7507246115660686396
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b4a938df402c67045a3fc4a7b840e573
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HealthBackground_0: -3599711609032658026
-      HealthBackground_1: 5603177147635045765
+      EnemyGridParticle1_0: -7507246115660686396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

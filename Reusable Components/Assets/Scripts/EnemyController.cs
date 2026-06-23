@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour, ITurnTaker
     // Stores this enemy's position in the enemy battle formation.
     public int enemyInt;
 
+    private bool waitingToAttack;
+
     void Awake()
     {
         // Cache required components attached to this enemy GameObject.
@@ -42,20 +44,32 @@ public class EnemyController : MonoBehaviour, ITurnTaker
 
         // Store the formation index assigned when this enemy was spawned.
         enemyInt = enemy.enemyIndex;
+        anchorMovement.onFinishedMoving += HandleFinishedMoving;
     }
 
     // Starts this enemy's turn by moving forward and creating its grid attack.
     public void StartTurn()
     {
-        // Move this enemy to the front attack position.
+        waitingToAttack = true;
         anchorMovement.MoveTo(anchorHolder.GetAnchor(0), 6);
+    }
 
-        // Create a new grid instance and start its attack sequence.
+    private void HandleFinishedMoving()
+    {
+        if (!waitingToAttack)
+            return;
+
+        waitingToAttack = false;
+        StartGridAttack();
+    }
+
+    private void StartGridAttack()
+    {
         currentGrid = Instantiate(grid, transform.position, Quaternion.identity);
-        currentGrid.Attack(enemy.level);
 
-        // Wait for the grid to finish before ending this enemy's turn.
         currentGrid.onAttackDone += HandleAttackFinished;
+
+        currentGrid.Attack(enemy.level);
     }
 
     // Moves this enemy back into its formation position after the enemy turn ends.
